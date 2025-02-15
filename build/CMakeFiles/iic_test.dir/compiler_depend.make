@@ -8,6 +8,8 @@ CMakeFiles/iic_test.dir/iic.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/i
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm-generic/int-ll64.h \
+  /usr/include/asm-generic/ioctl.h \
+  /usr/include/asm-generic/ioctls.h \
   /usr/include/asm-generic/posix_types.h \
   /usr/include/asm-generic/types.h \
   /usr/include/c++/13/backward/binders.h \
@@ -121,6 +123,7 @@ CMakeFiles/iic_test.dir/iic.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/i
   /usr/include/linux/falloc.h \
   /usr/include/linux/i2c-dev.h \
   /usr/include/linux/i2c.h \
+  /usr/include/linux/ioctl.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/stddef.h \
   /usr/include/linux/types.h \
@@ -139,6 +142,8 @@ CMakeFiles/iic_test.dir/iic.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/i
   /usr/include/wctype.h \
   /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
   /usr/include/x86_64-linux-gnu/asm/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/ioctl.h \
+  /usr/include/x86_64-linux-gnu/asm/ioctls.h \
   /usr/include/x86_64-linux-gnu/asm/posix_types.h \
   /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
   /usr/include/x86_64-linux-gnu/asm/types.h \
@@ -156,6 +161,8 @@ CMakeFiles/iic_test.dir/iic.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/i
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/ioctl-types.h \
+  /usr/include/x86_64-linux-gnu/bits/ioctls.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
@@ -228,8 +235,10 @@ CMakeFiles/iic_test.dir/iic.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/i
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/sys/ioctl.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+  /usr/include/x86_64-linux-gnu/sys/ttydefaults.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
@@ -481,6 +490,8 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
+/usr/include/x86_64-linux-gnu/sys/ioctl.h:
+
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
@@ -492,6 +503,8 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h:
+
+/usr/include/x86_64-linux-gnu/sys/ttydefaults.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h:
 
@@ -563,6 +576,8 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
+/usr/include/x86_64-linux-gnu/bits/ioctls.h:
+
 /usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:
@@ -617,7 +632,13 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/stdint.h:
 
+/usr/include/pthread.h:
+
 /usr/include/c++/13/bits/stl_construct.h:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/asm-generic/posix_types.h:
 
 /usr/include/c++/13/bits/stl_algobase.h:
 
@@ -659,15 +680,7 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/c++/13/bits/hash_bytes.h:
 
-/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/asm-generic/types.h:
-
-/usr/include/pthread.h:
-
-/usr/include/c++/13/bits/nested_exception.h:
+/usr/include/linux/close_range.h:
 
 /usr/include/c++/13/bits/move.h:
 
@@ -680,6 +693,16 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
 /usr/include/c++/13/bits/cpp_type_traits.h:
+
+/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/asm-generic/types.h:
+
+/usr/include/x86_64-linux-gnu/asm/ioctl.h:
+
+/usr/include/c++/13/bits/nested_exception.h:
 
 /usr/include/c++/13/bits/predefined_ops.h:
 
@@ -699,13 +722,13 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/c++/13/bits/exception_defines.h:
 
-/usr/include/c++/13/bits/locale_facets.h:
-
 /usr/include/c++/13/bits/locale_facets.tcc:
 
 /usr/include/c++/13/bits/requires_hosted.h:
 
 /usr/include/c++/13/bits/string_view.tcc:
+
+/usr/include/x86_64-linux-gnu/asm/ioctls.h:
 
 /usr/include/features.h:
 
@@ -713,21 +736,23 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/c++/13/bits/stringfwd.h:
 
-/usr/include/linux/close_range.h:
+/usr/include/asm-generic/ioctl.h:
 
-/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
+/usr/include/c++/13/ios:
 
-/usr/include/asm-generic/errno.h:
+/usr/include/c++/13/bits/locale_facets.h:
 
-/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp:
+/usr/include/asm-generic/ioctls.h:
+
+/usr/include/c++/13/new:
+
+/usr/include/i2c/smbus.h:
+
+/usr/include/c++/13/ext/alloc_traits.h:
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/c++/13/bits/basic_string.h:
-
-/usr/include/asm-generic/posix_types.h:
-
-/usr/include/stdc-predef.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h:
 
@@ -753,6 +778,14 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/linux/stddef.h:
 
+/usr/include/sched.h:
+
+/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.h:
+
+/usr/include/c++/13/bits/alloc_traits.h:
+
+/usr/include/c++/13/bits/concept_check.h:
+
 /usr/include/c++/13/bits/localefwd.h:
 
 /usr/include/linux/posix_types.h:
@@ -769,23 +802,17 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
 
-/usr/include/c++/13/bits/concept_check.h:
-
-/usr/include/c++/13/bits/alloc_traits.h:
-
-/usr/include/c++/13/new:
-
-/usr/include/i2c/smbus.h:
-
-/usr/include/c++/13/ext/alloc_traits.h:
-
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
-
-/usr/include/c++/13/bits/stl_iterator.h:
 
 /usr/include/c++/13/bits/functexcept.h:
 
-/usr/include/c++/13/ios:
+/usr/include/c++/13/bits/stl_iterator.h:
+
+/usr/include/asm-generic/errno.h:
+
+/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp:
+
+/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
 
 /usr/include/c++/13/bits/stl_iterator_base_types.h:
 
@@ -879,6 +906,8 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/c++/13/ext/string_conversions.h:
 
+/usr/include/x86_64-linux-gnu/bits/ioctl-types.h:
+
 /usr/include/c++/13/ext/type_traits.h:
 
 /usr/include/c++/13/iostream:
@@ -941,8 +970,6 @@ CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/
 
 /usr/include/linux/i2c.h:
 
-/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.h:
-
-/usr/include/sched.h:
+/usr/include/linux/ioctl.h:
 
 /usr/include/linux/types.h:

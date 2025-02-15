@@ -2,16 +2,26 @@
 #include <linux/i2c-dev.h>
 #include <i2c/smbus.h>
 #include "iic.h"
+#include "MPU6050.h"
 
-int main() {
-    IIC iic(1);  // 使用I2C-1总线（树莓派通常为1）
+int main() 
+{
+    IIC iic(1); // 使用I2C-1总线
     iic.iic_open();
+    initMPU6050(iic);
+
+    AngleData prevAngle = {0, 0};
+    const float dt = 0.01; // 10ms采样周期
 
     try {
-        iic.iic_writeRegister(0x6B, 0x00);  // 唤醒MPU6050
-        unsigned who_am_i = iic.iic_readRegister(0x75);  // 读取WHO_AM_I寄存器
-        std::cout << "WHO_AM_I value: 0x" << std::hex << who_am_i << std::endl;  // 正常应输出0x68
-    } catch (const std::exception& e) {
+        while (true) {
+            SensorData data = readMPU6050(iic);
+            AngleData angle = calculateAngle(data, dt, prevAngle);
+
+            std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch << "°" << std::endl;
+            usleep(dt * 1000000); // 等待10ms
+        }
+    } catch (const std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
 

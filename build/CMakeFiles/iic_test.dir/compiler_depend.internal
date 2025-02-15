@@ -9,6 +9,8 @@ CMakeFiles/iic_test.dir/iic.cpp.o
  /usr/include/asm-generic/errno-base.h
  /usr/include/asm-generic/errno.h
  /usr/include/asm-generic/int-ll64.h
+ /usr/include/asm-generic/ioctl.h
+ /usr/include/asm-generic/ioctls.h
  /usr/include/asm-generic/posix_types.h
  /usr/include/asm-generic/types.h
  /usr/include/c++/13/backward/binders.h
@@ -122,6 +124,7 @@ CMakeFiles/iic_test.dir/iic.cpp.o
  /usr/include/linux/falloc.h
  /usr/include/linux/i2c-dev.h
  /usr/include/linux/i2c.h
+ /usr/include/linux/ioctl.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/stddef.h
  /usr/include/linux/types.h
@@ -140,6 +143,8 @@ CMakeFiles/iic_test.dir/iic.cpp.o
  /usr/include/wctype.h
  /usr/include/x86_64-linux-gnu/asm/bitsperlong.h
  /usr/include/x86_64-linux-gnu/asm/errno.h
+ /usr/include/x86_64-linux-gnu/asm/ioctl.h
+ /usr/include/x86_64-linux-gnu/asm/ioctls.h
  /usr/include/x86_64-linux-gnu/asm/posix_types.h
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h
  /usr/include/x86_64-linux-gnu/asm/types.h
@@ -157,6 +162,8 @@ CMakeFiles/iic_test.dir/iic.cpp.o
  /usr/include/x86_64-linux-gnu/bits/floatn.h
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h
+ /usr/include/x86_64-linux-gnu/bits/ioctl-types.h
+ /usr/include/x86_64-linux-gnu/bits/ioctls.h
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h
  /usr/include/x86_64-linux-gnu/bits/locale.h
  /usr/include/x86_64-linux-gnu/bits/long-double.h
@@ -229,8 +236,10 @@ CMakeFiles/iic_test.dir/iic.cpp.o
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  /usr/include/x86_64-linux-gnu/gnu/stubs.h
  /usr/include/x86_64-linux-gnu/sys/cdefs.h
+ /usr/include/x86_64-linux-gnu/sys/ioctl.h
  /usr/include/x86_64-linux-gnu/sys/select.h
  /usr/include/x86_64-linux-gnu/sys/single_threaded.h
+ /usr/include/x86_64-linux-gnu/sys/ttydefaults.h
  /usr/include/x86_64-linux-gnu/sys/types.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h

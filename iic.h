@@ -9,7 +9,7 @@
 #include <cstring>
 #include <cstdint>
 #include <thread>
-
+#include <cmath>
 
 class IIC {
 public:
@@ -18,10 +18,10 @@ public:
     void iic_close();
     unsigned iic_readRegister(uint8_t reg);
     void iic_writeRegister(uint8_t reg, uint8_t value);
+    int file;
 
 private:
     int adapter_nr;
-    int file;
     char filename[20];
 };
 

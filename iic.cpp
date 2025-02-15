@@ -13,7 +13,7 @@ void IIC::iic_open() {
         exit(1);
     }
 
-    // 设置MPU6050的I2C地址（假设AD0接地，地址为0x68）
+    //Set the address of MPU6050
     if (ioctl(file, I2C_SLAVE, 0x68) < 0) {
         std::cerr << "Failed to set I2C slave address" << std::endl;
         exit(1);

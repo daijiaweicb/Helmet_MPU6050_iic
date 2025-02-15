@@ -1,6 +1,7 @@
-CMakeFiles/iic_test.dir/iic.cpp.o: \
- /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp \
+CMakeFiles/iic_test.dir/MPU6050.cpp.o: \
+ /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.cpp \
  /usr/include/stdc-predef.h \
+ /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.h \
  /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -203,12 +204,4 @@ CMakeFiles/iic_test.dir/iic.cpp.o: \
  /usr/include/c++/13/tr1/modified_bessel_func.tcc \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
- /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /usr/include/x86_64-linux-gnu/sys/ioctl.h \
- /usr/include/x86_64-linux-gnu/bits/ioctls.h \
- /usr/include/x86_64-linux-gnu/asm/ioctls.h \
- /usr/include/asm-generic/ioctls.h /usr/include/linux/ioctl.h \
- /usr/include/x86_64-linux-gnu/asm/ioctl.h \
- /usr/include/asm-generic/ioctl.h \
- /usr/include/x86_64-linux-gnu/bits/ioctl-types.h \
- /usr/include/x86_64-linux-gnu/sys/ttydefaults.h
+ /usr/include/c++/13/tr1/riemann_zeta.tcc
