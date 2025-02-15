@@ -1,0 +1,1 @@
+void iic_wirteRegister(u_int8_t reg , u_int8_t value);
