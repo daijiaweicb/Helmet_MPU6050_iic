@@ -6,20 +6,29 @@
 
 int main() 
 {
-    IIC iic(1); // 使用I2C-1总线
+    IIC iic(1);
     iic.iic_open();
     initMPU6050(iic);
 
+    AngleData params;
+    calibrateSensors(iic, params,1000); // 校准零偏
+
+    auto prevTime = std::chrono::high_resolution_clock::now();
     AngleData prevAngle = {0, 0};
-    const float dt = 0.01; // 10ms采样周期
 
     try {
         while (true) {
+            // 动态计算dt
+            auto currentTime = std::chrono::high_resolution_clock::now();
+            float dt = std::chrono::duration<float>(currentTime - prevTime).count();
+            prevTime = currentTime;
+
             SensorData data = readMPU6050(iic);
             AngleData angle = calculateAngle(data, dt, prevAngle);
+            prevAngle = angle;
 
             std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch << "°" << std::endl;
-            usleep(dt * 1000000); // 等待10ms
+            usleep(5000); // 粗略控制循环频率
         }
     } catch (const std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;

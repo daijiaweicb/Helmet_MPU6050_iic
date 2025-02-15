@@ -19,11 +19,15 @@ struct SensorData {
 };
 
 struct AngleData {
-    float roll, pitch; // 横滚角、俯仰角（单位：度）
+    float roll, pitch;
+    float filteredAccelX = 0, filteredAccelY = 0, filteredAccelZ = 0;
+    float gyroBiasX = 0, gyroBiasY = 0, gyroBiasZ = 0;
 };
 
+void calibrateSensors(IIC &iic, AngleData &params, int samples);
 SensorData readMPU6050(IIC &iic);
 AngleData calculateAngle(const SensorData &data, float dt, AngleData &prev);
+
 
 #endif
 

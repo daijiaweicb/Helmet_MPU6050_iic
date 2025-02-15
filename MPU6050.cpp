@@ -1,8 +1,19 @@
 #include "MPU6050.h"
 #include "iic.h"
 
-
-
+void calibrateSensors(IIC &iic, AngleData &params, int samples = 1000) {
+    float gx = 0, gy = 0, gz = 0;
+    for (int i = 0; i < samples; i++) {
+        SensorData data = readMPU6050(iic);
+        gx += data.gyroX;
+        gy += data.gyroY;
+        gz += data.gyroZ;
+        usleep(1000);
+    }
+    params.gyroBiasX = gx / samples;
+    params.gyroBiasY = gy / samples;
+    params.gyroBiasZ = gz / samples;
+}
 
 void initMPU6050(IIC &iic) {
     try {
@@ -67,18 +78,31 @@ SensorData readMPU6050(IIC &iic) {
 AngleData calculateAngle(const SensorData &data, float dt, AngleData &prev) {
     AngleData angle;
 
-    // 通过加速度计算俯仰角和横滚角
-    float accelRoll = atan2(data.accelY, data.accelZ) * 180.0 / M_PI;
-    float accelPitch = atan2(-data.accelX, sqrt(data.accelY * data.accelY + data.accelZ * data.accelZ)) * 180.0 / M_PI;
+    // 去除陀螺仪零偏
+    float gyroX = data.gyroX - prev.gyroBiasX;
+    float gyroY = data.gyroY - prev.gyroBiasY;
+    float gyroZ = data.gyroZ - prev.gyroBiasZ;
 
-    // 通过陀螺仪积分计算角度
-    float gyroRoll = prev.roll + data.gyroX * dt;
-    float gyroPitch = prev.pitch + data.gyroY * dt;
+    // 加速度计低通滤波
+    const float alpha = 0.2;
+    angle.filteredAccelX = alpha * data.accelX + (1 - alpha) * prev.filteredAccelX;
+    angle.filteredAccelY = alpha * data.accelY + (1 - alpha) * prev.filteredAccelY;
+    angle.filteredAccelZ = alpha * data.accelZ + (1 - alpha) * prev.filteredAccelZ;
 
-    // 互补滤波融合
-    angle.roll = 0.98 * gyroRoll + 0.02 * accelRoll;
-    angle.pitch = 0.98 * gyroPitch + 0.02 * accelPitch;
+    // 计算加速度计角度
+    float accelRoll = atan2(angle.filteredAccelY, angle.filteredAccelZ) * 180.0 / M_PI;
+    float accelPitch = atan2(-angle.filteredAccelX, 
+        sqrt(angle.filteredAccelY * angle.filteredAccelY + 
+             angle.filteredAccelZ * angle.filteredAccelZ)) * 180.0 / M_PI;
 
-    prev = angle;
+    // 陀螺仪积分
+    float gyroRoll = prev.roll + gyroX * dt;
+    float gyroPitch = prev.pitch + gyroY * dt;
+
+    // 互补滤波（权重可调）
+    const float accelWeight = 0.05;
+    angle.roll = (1 - accelWeight) * gyroRoll + accelWeight * accelRoll;
+    angle.pitch = (1 - accelWeight) * gyroPitch + accelWeight * accelPitch;
+
     return angle;
 }
