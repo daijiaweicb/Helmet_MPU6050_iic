@@ -1,50 +1,50 @@
 #include "iic.h"
+#include <iostream>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/ioctl.h>
+#include <linux/i2c-dev.h>
 
- void IIC ::iic_open()
- {
+void IIC::iic_open() {
     snprintf(filename, sizeof(filename), "/dev/i2c-%d", adapter_nr);
     file = open(filename, O_RDWR);
     if (file < 0) {
         std::cerr << "Can not open i2c device: " << filename << std::endl;
         exit(1);
     }
-    std::cout << "i2c device has been opened successfully " << filename << std::endl;
 
- }
+    // 设置MPU6050的I2C地址（假设AD0接地，地址为0x68）
+    if (ioctl(file, I2C_SLAVE, 0x68) < 0) {
+        std::cerr << "Failed to set I2C slave address" << std::endl;
+        exit(1);
+    }
 
- void IIC :: iic_close()
- {
+    std::cout << "i2c device opened: " << filename << std::endl;
+}
+
+void IIC::iic_close() {
     if (file >= 0) {
-            close(file);
-            file = -1;
-            std::cout << "i2c device has been closed" << std::endl;
-        }
- }
-
-unsigned IIC::iic_readRegister(uint8_t reg)
-{
-    uint8_t tmp[2];
-    tmp[0] = reg;
-    write(file,&tmp,1);
-    long int r = read(file,tmp,2);
-    if (r < 0) {
-        throw std::runtime_error("Could not write register address");
-    }
-
-    return (((unsigned)(tmp[0])) << 8) | ((unsigned)(tmp[1]));
-}
-
-void IIC::iic_writeRegister(uint8_t reg, uint8_t value)
-{
-    uint8_t tmp[2];
-    tmp[0] = reg;
-    // tmp[1] = (char)((value & 0xff00) >> 8);
-	// tmp[2] = (char)(value & 0x00ff);
-    tmp[1] = value;
-	long int r = write(file,&tmp,2);
-
-    if (r < 0) {
-        throw std::runtime_error("Could not write to i2c");
+        close(file);
+        file = -1;
+        std::cout << "i2c device closed" << std::endl;
     }
 }
 
+unsigned IIC::iic_readRegister(uint8_t reg) {
+    uint8_t tmp[1];
+    tmp[0] = reg;
+    if (write(file, tmp, 1) != 1) {
+        throw std::runtime_error("Failed to write register address");
+    }
+    if (read(file, tmp, 1) != 1) {
+        throw std::runtime_error("Failed to read register value");
+    }
+    return (unsigned)tmp[0];
+}
+
+void IIC::iic_writeRegister(uint8_t reg, uint8_t value) {
+    uint8_t tmp[2] = {reg, value};
+    if (write(file, tmp, 2) != 2) {
+        throw std::runtime_error("Failed to write to i2c");
+    }
+}

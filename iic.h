@@ -8,27 +8,21 @@
 #include <unistd.h>
 #include <cstring>
 #include <cstdint>
+#include <thread>
 
 
 class IIC {
 public:
-    int file;
-    int adapter_nr;
-    char filename[20];
-
-    IIC(int adapter) : file(-1), adapter_nr(adapter) {}
-
-    void iic_close();
+    IIC(int adapter) : adapter_nr(adapter), file(-1) {}
     void iic_open();
-    unsigned iic_readRegister(uint8_t eg);
-    void iic_writeRegister(uint8_t reg , uint8_t value);
+    void iic_close();
+    unsigned iic_readRegister(uint8_t reg);
+    void iic_writeRegister(uint8_t reg, uint8_t value);
 
-
-    ~IIC() {
-        iic_close();
-    }
-    
-    
+private:
+    int adapter_nr;
+    int file;
+    char filename[20];
 };
 
 
