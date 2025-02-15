@@ -7,8 +7,8 @@ int main()
 {
     IIC iic(1);
     iic.iic_open();
-    iic.iic_writeRegister(0x25, 0x11);
-    unsigned value =iic.iic_readRegister(0x25);
+    iic.iic_writeRegister(0x68, 0x75);
+    unsigned value =iic.iic_readRegister(0x68);
     std:: cout << "value is :" << value << std::endl;
     iic.iic_close();
     return 0;

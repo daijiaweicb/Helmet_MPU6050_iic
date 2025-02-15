@@ -34,13 +34,14 @@ unsigned IIC::iic_readRegister(uint8_t reg)
     return (((unsigned)(tmp[0])) << 8) | ((unsigned)(tmp[1]));
 }
 
-void IIC::iic_writeRegister(uint8_t reg, unsigned value)
+void IIC::iic_writeRegister(uint8_t reg, uint8_t value)
 {
-    uint8_t tmp[3];
+    uint8_t tmp[2];
     tmp[0] = reg;
-    tmp[1] = (char)((value & 0xff00) >> 8);
-	tmp[2] = (char)(value & 0x00ff);
-	long int r = write(file,&tmp,3);
+    // tmp[1] = (char)((value & 0xff00) >> 8);
+	// tmp[2] = (char)(value & 0x00ff);
+    tmp[1] = value;
+	long int r = write(file,&tmp,2);
 
     if (r < 0) {
         throw std::runtime_error("Could not write to i2c");

@@ -20,8 +20,8 @@ public:
 
     void iic_close();
     void iic_open();
-    unsigned iic_readRegister(u_int8_t reg);
-    void iic_writeRegister(u_int8_t reg , unsigned value);
+    unsigned iic_readRegister(uint8_t eg);
+    void iic_writeRegister(uint8_t reg , uint8_t value);
 
 
     ~IIC() {
