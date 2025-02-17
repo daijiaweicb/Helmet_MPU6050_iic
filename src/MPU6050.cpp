@@ -1,5 +1,5 @@
 #include "MPU6050.h"
-#include "iic.h"
+#include <cmath>
 
 //---------------------- Kalman 函数 ----------------------
 void initKalmanFilter(KalmanFilter &kf)
