@@ -8,7 +8,7 @@ void calibrateSensors(IIC &iic, AngleData &params, int samples = 1000) {
         gx += data.gyroX;
         gy += data.gyroY;
         gz += data.gyroZ;
-        usleep(1000);
+        // usleep(1000);
     }
     params.gyroBiasX = gx / samples;
     params.gyroBiasY = gy / samples;
