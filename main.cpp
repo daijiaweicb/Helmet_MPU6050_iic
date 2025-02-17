@@ -11,8 +11,8 @@ int main()
     initMPU6050(iic);
 
     // 校准零偏，保存到 params 中
-    AngleData calib;
-    calibrateSensors(iic, calib, 1000); // 校准零偏
+    AngleData params;
+    calibrateSensors(iic, params, 1000); // 校准零偏
 
     auto prevTime = std::chrono::high_resolution_clock::now();
     // 初始化积分角度为0
@@ -28,7 +28,7 @@ int main()
             SensorData data = readMPU6050(iic);
 
             // 使用校准零偏进行角度积分
-            AngleData angle = calculateAngle(data, dt, prevAngle, calib);
+            AngleData angle = calculateAngle(data, dt, prevAngle, params);
             prevAngle = angle;  // 更新积分结果
 
             // std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch 
