@@ -31,9 +31,13 @@ int main()
             AngleData angle = calculateAngle(data, dt, prevAngle, calib);
             prevAngle = angle;  // 更新积分结果
 
-            std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch 
-                      << "°" << std::endl;
+            // std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch 
+            //           << "°" << std::endl;
+
+            std::cout<< "X: "<< angle.filteredAccelX <<",Y: "<<angle.filteredAccelY<<",Z: "<<angle.filteredAccelZ << std::endl;
         }
+        
+
     } catch (const std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
