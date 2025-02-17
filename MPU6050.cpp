@@ -32,7 +32,7 @@ void initMPU6050(IIC &iic) {
 }
 
 SensorData readMPU6050(IIC &iic) {
-    uint8_t buffer[14];
+    uint8_t buffer[6];
     SensorData data;
 
     // 读取14字节数据（从0x3B开始）

@@ -28,7 +28,7 @@ int main()
             prevAngle = angle;
 
             // std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch << "°" << std::endl;
-            std::cout <<"X: " << angle.gyroBiasX << ",Y: " << angle.gyroBiasY<< ",Z: " << angle.gyroBiasZ;
+            std::cout <<"X: " << data.gyroX << ",Y: " << data.gyroY<< ",Z: " << data.gyroZ<<std::endl;
 
             usleep(5000); // 粗略控制循环频率
         }
