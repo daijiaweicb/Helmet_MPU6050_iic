@@ -1,14 +1,14 @@
 #include "MPU6050.h"
 #include "iic.h"
 
-void calibrateSensors(IIC &iic, AngleData &params, int samples = 1000) {
+void calibrateSensors(IIC &iic, AngleData &params, int samples = 5000) {
     float gx = 0, gy = 0, gz = 0;
     for (int i = 0; i < samples; i++) {
         SensorData data = readMPU6050(iic);
         gx += data.gyroX;
         gy += data.gyroY;
         gz += data.gyroZ;
-        usleep(1000);
+        usleep(5000);
     }
     params.gyroBiasX = gx / samples;
     params.gyroBiasY = gy / samples;
