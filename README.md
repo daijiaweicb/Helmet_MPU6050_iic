@@ -1,10 +1,10 @@
 # Helmet_MPU6050_iic
-## Reference of I2C
+## Reference of I2C based on rapsberry pi
 https://www.kernel.org/doc/Documentation/i2c/dev-interface
 
 ## See what number corresponds to which adapter
 ```bash
-run i2cdetect -l
+i2cdetect -l
 ```
 
 ## Install libraries
