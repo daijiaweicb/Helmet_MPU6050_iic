@@ -1,14 +1,14 @@
 #include "MPU6050.h"
 #include "iic.h"
 
-void calibrateSensors(IIC &iic, AngleData &params, int samples = 100) {
+void calibrateSensors(IIC &iic, AngleData &params, int samples = 1000) {
     float gx = 0, gy = 0, gz = 0;
     for (int i = 0; i < samples; i++) {
         SensorData data = readMPU6050(iic);
         gx += data.gyroX;
         gy += data.gyroY;
         gz += data.gyroZ;
-        usleep(100);
+        usleep(1000);
     }
     params.gyroBiasX = gx / samples;
     params.gyroBiasY = gy / samples;
@@ -28,7 +28,7 @@ void initMPU6050(IIC &iic) {
         iic.iic_writeRegister(0x1A, 0x03); // 带宽44Hz，延迟4.9ms
 
 
-        iic.iic_writeRegister(0x19, 9);
+        iic.iic_writeRegister(0x19, 0);
         
     } catch (const std::exception &e) {
         std::cerr << "初始化失败: " << e.what() << std::endl;
