@@ -11,7 +11,7 @@ int main()
     initMPU6050(iic);
 
     AngleData params;
-    calibrateSensors(iic, params,1000); // 校准零偏
+    calibrateSensors(iic, params,5000); // 校准零偏
 
     auto prevTime = std::chrono::high_resolution_clock::now();
     AngleData prevAngle = {0, 0};
