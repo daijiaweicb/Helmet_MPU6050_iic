@@ -30,7 +30,6 @@ int main()
             // std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch << "°" << std::endl;
             std::cout <<"X: " << data.gyroX << ",Y: " << data.gyroY<< ",Z: " << data.gyroZ<<std::endl;
 
-            usleep(5000); // 粗略控制循环频率
         }
     } catch (const std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;

@@ -29,7 +29,7 @@ void initMPU6050(IIC &iic) {
 
 
         iic.iic_writeRegister(0x19, 9);
-        
+
     } catch (const std::exception &e) {
         std::cerr << "初始化失败: " << e.what() << std::endl;
         exit(1);
@@ -53,11 +53,11 @@ SensorData readMPU6050(IIC &iic) {
     int16_t gz = (buffer[4] << 8) | buffer[5];
 
     // 转换为物理量（根据量程配置）
-    const float gyroScale = 250.0 / 32768.0; // ±250°/s时的灵敏度
+    // const float gyroScale = 250.0 / 32768.0; // ±250°/s时的灵敏度
 
-    data.gyroX = gx * gyroScale;
-    data.gyroY = gy * gyroScale;
-    data.gyroZ = gz * gyroScale;
+    data.gyroX = gx ;
+    data.gyroY = gy ;
+    data.gyroZ = gz ;
 
     return data;
 }
