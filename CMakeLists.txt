@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 include_directories(include)
 
-add_executable(iic_test main.cpp iic.cpp MPU6050.cpp)
+add_executable(iic_test main.cpp iic.cpp MPU6050.cpp Test.cpp)
 
 # 手动链接 libi2c 库
 target_link_libraries(iic_test PRIVATE i2c)

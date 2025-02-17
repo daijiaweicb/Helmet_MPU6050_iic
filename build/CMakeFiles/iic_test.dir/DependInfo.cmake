@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.cpp" "CMakeFiles/iic_test.dir/MPU6050.cpp.o" "gcc" "CMakeFiles/iic_test.dir/MPU6050.cpp.o.d"
+  "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/Test.cpp" "CMakeFiles/iic_test.dir/Test.cpp.o" "gcc" "CMakeFiles/iic_test.dir/Test.cpp.o.d"
   "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp" "CMakeFiles/iic_test.dir/iic.cpp.o" "gcc" "CMakeFiles/iic_test.dir/iic.cpp.o.d"
   "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/main.cpp" "CMakeFiles/iic_test.dir/main.cpp.o" "gcc" "CMakeFiles/iic_test.dir/main.cpp.o.d"
   )

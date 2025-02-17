@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/iic_test.dir/MPU6050.cpp.o"
   "CMakeFiles/iic_test.dir/MPU6050.cpp.o.d"
+  "CMakeFiles/iic_test.dir/Test.cpp.o"
+  "CMakeFiles/iic_test.dir/Test.cpp.o.d"
   "CMakeFiles/iic_test.dir/iic.cpp.o"
   "CMakeFiles/iic_test.dir/iic.cpp.o.d"
   "CMakeFiles/iic_test.dir/main.cpp.o"

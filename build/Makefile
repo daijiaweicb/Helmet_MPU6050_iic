@@ -153,6 +153,30 @@ MPU6050.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/MPU6050.cpp.s
 .PHONY : MPU6050.cpp.s
 
+Test.o: Test.cpp.o
+.PHONY : Test.o
+
+# target to build an object file
+Test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/Test.cpp.o
+.PHONY : Test.cpp.o
+
+Test.i: Test.cpp.i
+.PHONY : Test.i
+
+# target to preprocess a source file
+Test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/Test.cpp.i
+.PHONY : Test.cpp.i
+
+Test.s: Test.cpp.s
+.PHONY : Test.s
+
+# target to generate assembly for a file
+Test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/Test.cpp.s
+.PHONY : Test.cpp.s
+
 iic.o: iic.cpp.o
 .PHONY : iic.o
 
@@ -213,6 +237,9 @@ help:
 	@echo "... MPU6050.o"
 	@echo "... MPU6050.i"
 	@echo "... MPU6050.s"
+	@echo "... Test.o"
+	@echo "... Test.i"
+	@echo "... Test.s"
 	@echo "... iic.o"
 	@echo "... iic.i"
 	@echo "... iic.s"
