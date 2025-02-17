@@ -12,7 +12,7 @@ int main()
 
     // 校准零偏，保存到 params 中
     AngleData calib;
-    calibrateSensors(iic, calib, 1000); // 校准零偏
+    calibrateSensors(iic, calib, 100); // 校准零偏
 
     auto prevTime = std::chrono::high_resolution_clock::now();
     // 初始化积分角度为0
