@@ -9,8 +9,6 @@
 #include "MPU6050.h"
 #include "Test.h"
 
-#define MPU6050_ADDR 0x68
-
 int main() 
 {
     test();    
