@@ -1,9 +1,4 @@
 #include "iic.h"
-#include <iostream>
-#include <fcntl.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
-#include <linux/i2c-dev.h>
 
 void IIC::iic_open() {
     snprintf(filename, sizeof(filename), "/dev/i2c-%d", adapter_nr);

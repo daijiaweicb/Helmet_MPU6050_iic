@@ -1,15 +1,14 @@
-#ifndef _IIC_H
-#define _IIC_H
+#ifndef IIC_H
+#define IIC_H
 
 #include <iostream>
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
 #include <i2c/smbus.h>
-#include <unistd.h>
+#include <sys/ioctl.h>
 #include <cstring>
 #include <cstdint>
-#include <thread>
-#include <cmath>
+#include <unistd.h>
 
 class IIC {
 public:
