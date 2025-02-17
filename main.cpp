@@ -24,8 +24,8 @@ int main()
             prevTime = currentTime;
 
             SensorData data = readMPU6050(iic);
-            AngleData angle = calculateAngle(data, dt, prevAngle);
-            prevAngle = angle;
+            // AngleData angle = calculateAngle(data, dt, prevAngle);
+            // prevAngle = angle;
 
             // std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch << "°" << std::endl;
             std::cout <<"X: " << data.gyroX << ",Y: " << data.gyroY<< ",Z: " << data.gyroZ<<std::endl;
