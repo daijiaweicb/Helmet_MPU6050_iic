@@ -27,7 +27,9 @@ int main()
             AngleData angle = calculateAngle(data, dt, prevAngle);
             prevAngle = angle;
 
-            std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch << "°" << std::endl;
+            // std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch << "°" << std::endl;
+            std::cout <<"X: " << angle.gyroBiasX << ",Y: " << angle.gyroBiasY<< ",Z: " << angle.gyroBiasZ;
+
             usleep(5000); // 粗略控制循环频率
         }
     } catch (const std::exception &e) {

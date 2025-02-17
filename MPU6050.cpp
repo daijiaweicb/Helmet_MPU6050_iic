@@ -37,15 +37,15 @@ SensorData readMPU6050(IIC &iic) {
 
     // 读取14字节数据（从0x3B开始）
     iic.iic_writeRegister(0x43, 0x00); // 设置起始寄存器地址
-    ssize_t bytesRead = read(iic.file, buffer, 14);
-    if (bytesRead != 14) {
+    ssize_t bytesRead = read(iic.file, buffer, 6);
+    if (bytesRead != 6) {
         throw std::runtime_error("读取传感器数据失败");
     }
 
     // 陀螺仪原始数据（16位有符号）
-    int16_t gx = (buffer[8] << 8) | buffer[9];
-    int16_t gy = (buffer[10] << 8) | buffer[11];
-    int16_t gz = (buffer[12] << 8) | buffer[13];
+    int16_t gx = (buffer[0] << 8) | buffer[1];
+    int16_t gy = (buffer[2] << 8) | buffer[3];
+    int16_t gz = (buffer[4] << 8) | buffer[5];
 
     // 转换为物理量（根据量程配置）
     const float gyroScale = 250.0 / 32768.0; // ±250°/s时的灵敏度
@@ -67,9 +67,9 @@ AngleData calculateAngle(const SensorData &data, float dt, AngleData &prev) {
     float gyroY = data.gyroY - prev.gyroBiasY;
     float gyroZ = data.gyroZ - prev.gyroBiasZ;
 
-    // 陀螺仪积分
-    float gyroRoll = prev.roll + gyroX * dt;
-    float gyroPitch = prev.pitch + gyroY * dt;
+    // // 陀螺仪积分
+    // float gyroRoll = prev.roll + gyroX * dt;
+    // float gyroPitch = prev.pitch + gyroY * dt;
 
     return angle;
 }
