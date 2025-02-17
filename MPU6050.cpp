@@ -68,13 +68,13 @@ SensorData readMPU6050(IIC &iic) {
 AngleData calculateAngle(const SensorData &data, float dt, const AngleData &prev, const AngleData &calib) {
     AngleData angle;
     // 用校准的零偏值减去原始数据
-    float gyroX = data.gyroX - calib.gyroBiasX;
-    float gyroY = data.gyroY - calib.gyroBiasY;
-    float gyroZ = data.gyroZ - calib.gyroBiasZ;
+    angle.gyroX = data.gyroX - calib.gyroBiasX;
+    angle.gyroY = data.gyroY - calib.gyroBiasY;
+    angle.gyroZ = data.gyroZ - calib.gyroBiasZ;
 
     // 积分计算
-    angle.roll  = prev.roll  + gyroX * dt;
-    angle.pitch = prev.pitch + gyroY * dt;
+    // angle.roll  = prev.roll  + gyroX * dt;
+    // angle.pitch = prev.pitch + gyroY * dt;
 
     return angle;
 }

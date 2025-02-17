@@ -21,6 +21,7 @@ struct SensorData {
 struct AngleData {
     float roll, pitch;
     float filteredAccelX = 0, filteredAccelY = 0, filteredAccelZ = 0;
+    float gyroX, gyroY, gyroZ;
     float gyroBiasX = 0, gyroBiasY = 0, gyroBiasZ = 0;
 };
 

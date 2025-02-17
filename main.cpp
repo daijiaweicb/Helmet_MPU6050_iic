@@ -34,7 +34,7 @@ int main()
             // std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch 
             //           << "°" << std::endl;
 
-            std::cout<< "X: "<< angle.filteredAccelX <<",Y: "<<angle.filteredAccelY<<",Z: "<<angle.filteredAccelZ << std::endl;
+            std::cout<< "X: "<< angle.gyroX <<",Y: "<<angle.gyroY<<",Z: "<<angle.gyroZ << std::endl;
         }
         
 
