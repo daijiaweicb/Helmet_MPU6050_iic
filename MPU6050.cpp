@@ -28,7 +28,7 @@ void initMPU6050(IIC &iic) {
         iic.iic_writeRegister(0x1A, 0x03); // 带宽44Hz，延迟4.9ms
 
 
-        iic.iic_writeRegister(0x19, 9);
+        iic.iic_writeRegister(0x19, 0);
         
     } catch (const std::exception &e) {
         std::cerr << "初始化失败: " << e.what() << std::endl;
