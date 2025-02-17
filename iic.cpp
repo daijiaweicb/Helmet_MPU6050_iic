@@ -30,17 +30,17 @@ void IIC::iic_close() {
     }
 }
 
-unsigned IIC::iic_readRegister(uint8_t reg) {
-    uint8_t tmp[1];
-    tmp[0] = reg;
-    if (write(file, tmp, 1) != 1) {
-        throw std::runtime_error("Failed to write register address");
+bool IIC::readRegisters(uint8_t reg, uint8_t* buffer, size_t length) {
+        if (write(file, &reg, 1) != 1) {
+            std::cerr << "Error writing register address" << std::endl;
+            return false;
+        }
+        if (read(file, buffer, length) != (ssize_t)length) {
+            std::cerr << "Error reading registers" << std::endl;
+            return false;
+        }
+        return true;
     }
-    if (read(file, tmp, 1) != 1) {
-        throw std::runtime_error("Failed to read register value");
-    }
-    return (unsigned)tmp[0];
-}
 
 void IIC::iic_writeRegister(uint8_t reg, uint8_t value) {
     uint8_t tmp[2] = {reg, value};

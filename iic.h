@@ -16,7 +16,7 @@ public:
     IIC(int adapter) : adapter_nr(adapter), file(-1) {}
     void iic_open();
     void iic_close();
-    unsigned iic_readRegister(uint8_t reg);
+    bool readRegisters(uint8_t reg, uint8_t* buffer, size_t length);
     void iic_writeRegister(uint8_t reg, uint8_t value);
     int file;
 
