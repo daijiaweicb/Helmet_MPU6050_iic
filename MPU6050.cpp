@@ -72,9 +72,9 @@ AngleData calculateAngle(const SensorData &data, float dt, AngleData &prev) {
     float gyroY = data.gyroY - prev.gyroBiasY;
     float gyroZ = data.gyroZ - prev.gyroBiasZ;
 
-    // // 陀螺仪积分
-    // float gyroRoll = prev.roll + gyroX * dt;
-    // float gyroPitch = prev.pitch + gyroY * dt;
+    // 陀螺仪积分
+    float gyroRoll = prev.roll + gyroX * dt;
+    float gyroPitch = prev.pitch + gyroY * dt;
 
     return angle;
 }
