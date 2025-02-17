@@ -69,76 +69,76 @@ include CMakeFiles/iic_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/iic_test.dir/flags.make
 
-CMakeFiles/iic_test.dir/main.cpp.o: CMakeFiles/iic_test.dir/flags.make
-CMakeFiles/iic_test.dir/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/main.cpp
-CMakeFiles/iic_test.dir/main.cpp.o: CMakeFiles/iic_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/iic_test.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/iic_test.dir/main.cpp.o -MF CMakeFiles/iic_test.dir/main.cpp.o.d -o CMakeFiles/iic_test.dir/main.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/main.cpp
+CMakeFiles/iic_test.dir/src/MPU6050.cpp.o: CMakeFiles/iic_test.dir/flags.make
+CMakeFiles/iic_test.dir/src/MPU6050.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/MPU6050.cpp
+CMakeFiles/iic_test.dir/src/MPU6050.cpp.o: CMakeFiles/iic_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/iic_test.dir/src/MPU6050.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/iic_test.dir/src/MPU6050.cpp.o -MF CMakeFiles/iic_test.dir/src/MPU6050.cpp.o.d -o CMakeFiles/iic_test.dir/src/MPU6050.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/MPU6050.cpp
 
-CMakeFiles/iic_test.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/iic_test.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/main.cpp > CMakeFiles/iic_test.dir/main.cpp.i
+CMakeFiles/iic_test.dir/src/MPU6050.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/iic_test.dir/src/MPU6050.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/MPU6050.cpp > CMakeFiles/iic_test.dir/src/MPU6050.cpp.i
 
-CMakeFiles/iic_test.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/iic_test.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/main.cpp -o CMakeFiles/iic_test.dir/main.cpp.s
+CMakeFiles/iic_test.dir/src/MPU6050.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/iic_test.dir/src/MPU6050.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/MPU6050.cpp -o CMakeFiles/iic_test.dir/src/MPU6050.cpp.s
 
-CMakeFiles/iic_test.dir/iic.cpp.o: CMakeFiles/iic_test.dir/flags.make
-CMakeFiles/iic_test.dir/iic.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp
-CMakeFiles/iic_test.dir/iic.cpp.o: CMakeFiles/iic_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/iic_test.dir/iic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/iic_test.dir/iic.cpp.o -MF CMakeFiles/iic_test.dir/iic.cpp.o.d -o CMakeFiles/iic_test.dir/iic.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp
+CMakeFiles/iic_test.dir/src/Test.cpp.o: CMakeFiles/iic_test.dir/flags.make
+CMakeFiles/iic_test.dir/src/Test.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/Test.cpp
+CMakeFiles/iic_test.dir/src/Test.cpp.o: CMakeFiles/iic_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/iic_test.dir/src/Test.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/iic_test.dir/src/Test.cpp.o -MF CMakeFiles/iic_test.dir/src/Test.cpp.o.d -o CMakeFiles/iic_test.dir/src/Test.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/Test.cpp
 
-CMakeFiles/iic_test.dir/iic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/iic_test.dir/iic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp > CMakeFiles/iic_test.dir/iic.cpp.i
+CMakeFiles/iic_test.dir/src/Test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/iic_test.dir/src/Test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/Test.cpp > CMakeFiles/iic_test.dir/src/Test.cpp.i
 
-CMakeFiles/iic_test.dir/iic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/iic_test.dir/iic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp -o CMakeFiles/iic_test.dir/iic.cpp.s
+CMakeFiles/iic_test.dir/src/Test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/iic_test.dir/src/Test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/Test.cpp -o CMakeFiles/iic_test.dir/src/Test.cpp.s
 
-CMakeFiles/iic_test.dir/MPU6050.cpp.o: CMakeFiles/iic_test.dir/flags.make
-CMakeFiles/iic_test.dir/MPU6050.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.cpp
-CMakeFiles/iic_test.dir/MPU6050.cpp.o: CMakeFiles/iic_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/iic_test.dir/MPU6050.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/iic_test.dir/MPU6050.cpp.o -MF CMakeFiles/iic_test.dir/MPU6050.cpp.o.d -o CMakeFiles/iic_test.dir/MPU6050.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.cpp
+CMakeFiles/iic_test.dir/src/iic.cpp.o: CMakeFiles/iic_test.dir/flags.make
+CMakeFiles/iic_test.dir/src/iic.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/iic.cpp
+CMakeFiles/iic_test.dir/src/iic.cpp.o: CMakeFiles/iic_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/iic_test.dir/src/iic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/iic_test.dir/src/iic.cpp.o -MF CMakeFiles/iic_test.dir/src/iic.cpp.o.d -o CMakeFiles/iic_test.dir/src/iic.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/iic.cpp
 
-CMakeFiles/iic_test.dir/MPU6050.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/iic_test.dir/MPU6050.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.cpp > CMakeFiles/iic_test.dir/MPU6050.cpp.i
+CMakeFiles/iic_test.dir/src/iic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/iic_test.dir/src/iic.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/iic.cpp > CMakeFiles/iic_test.dir/src/iic.cpp.i
 
-CMakeFiles/iic_test.dir/MPU6050.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/iic_test.dir/MPU6050.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.cpp -o CMakeFiles/iic_test.dir/MPU6050.cpp.s
+CMakeFiles/iic_test.dir/src/iic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/iic_test.dir/src/iic.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/iic.cpp -o CMakeFiles/iic_test.dir/src/iic.cpp.s
 
-CMakeFiles/iic_test.dir/Test.cpp.o: CMakeFiles/iic_test.dir/flags.make
-CMakeFiles/iic_test.dir/Test.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/Test.cpp
-CMakeFiles/iic_test.dir/Test.cpp.o: CMakeFiles/iic_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/iic_test.dir/Test.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/iic_test.dir/Test.cpp.o -MF CMakeFiles/iic_test.dir/Test.cpp.o.d -o CMakeFiles/iic_test.dir/Test.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/Test.cpp
+CMakeFiles/iic_test.dir/src/main.cpp.o: CMakeFiles/iic_test.dir/flags.make
+CMakeFiles/iic_test.dir/src/main.cpp.o: /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/main.cpp
+CMakeFiles/iic_test.dir/src/main.cpp.o: CMakeFiles/iic_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/iic_test.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/iic_test.dir/src/main.cpp.o -MF CMakeFiles/iic_test.dir/src/main.cpp.o.d -o CMakeFiles/iic_test.dir/src/main.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/main.cpp
 
-CMakeFiles/iic_test.dir/Test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/iic_test.dir/Test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/Test.cpp > CMakeFiles/iic_test.dir/Test.cpp.i
+CMakeFiles/iic_test.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/iic_test.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/main.cpp > CMakeFiles/iic_test.dir/src/main.cpp.i
 
-CMakeFiles/iic_test.dir/Test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/iic_test.dir/Test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/Test.cpp -o CMakeFiles/iic_test.dir/Test.cpp.s
+CMakeFiles/iic_test.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/iic_test.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/main.cpp -o CMakeFiles/iic_test.dir/src/main.cpp.s
 
 # Object files for target iic_test
 iic_test_OBJECTS = \
-"CMakeFiles/iic_test.dir/main.cpp.o" \
-"CMakeFiles/iic_test.dir/iic.cpp.o" \
-"CMakeFiles/iic_test.dir/MPU6050.cpp.o" \
-"CMakeFiles/iic_test.dir/Test.cpp.o"
+"CMakeFiles/iic_test.dir/src/MPU6050.cpp.o" \
+"CMakeFiles/iic_test.dir/src/Test.cpp.o" \
+"CMakeFiles/iic_test.dir/src/iic.cpp.o" \
+"CMakeFiles/iic_test.dir/src/main.cpp.o"
 
 # External object files for target iic_test
 iic_test_EXTERNAL_OBJECTS =
 
-iic_test: CMakeFiles/iic_test.dir/main.cpp.o
-iic_test: CMakeFiles/iic_test.dir/iic.cpp.o
-iic_test: CMakeFiles/iic_test.dir/MPU6050.cpp.o
-iic_test: CMakeFiles/iic_test.dir/Test.cpp.o
+iic_test: CMakeFiles/iic_test.dir/src/MPU6050.cpp.o
+iic_test: CMakeFiles/iic_test.dir/src/Test.cpp.o
+iic_test: CMakeFiles/iic_test.dir/src/iic.cpp.o
+iic_test: CMakeFiles/iic_test.dir/src/main.cpp.o
 iic_test: CMakeFiles/iic_test.dir/build.make
 iic_test: CMakeFiles/iic_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable iic_test"

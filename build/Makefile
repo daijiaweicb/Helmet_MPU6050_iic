@@ -129,101 +129,101 @@ iic_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/build
 .PHONY : iic_test/fast
 
-MPU6050.o: MPU6050.cpp.o
-.PHONY : MPU6050.o
+src/MPU6050.o: src/MPU6050.cpp.o
+.PHONY : src/MPU6050.o
 
 # target to build an object file
-MPU6050.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/MPU6050.cpp.o
-.PHONY : MPU6050.cpp.o
+src/MPU6050.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/MPU6050.cpp.o
+.PHONY : src/MPU6050.cpp.o
 
-MPU6050.i: MPU6050.cpp.i
-.PHONY : MPU6050.i
+src/MPU6050.i: src/MPU6050.cpp.i
+.PHONY : src/MPU6050.i
 
 # target to preprocess a source file
-MPU6050.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/MPU6050.cpp.i
-.PHONY : MPU6050.cpp.i
+src/MPU6050.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/MPU6050.cpp.i
+.PHONY : src/MPU6050.cpp.i
 
-MPU6050.s: MPU6050.cpp.s
-.PHONY : MPU6050.s
+src/MPU6050.s: src/MPU6050.cpp.s
+.PHONY : src/MPU6050.s
 
 # target to generate assembly for a file
-MPU6050.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/MPU6050.cpp.s
-.PHONY : MPU6050.cpp.s
+src/MPU6050.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/MPU6050.cpp.s
+.PHONY : src/MPU6050.cpp.s
 
-Test.o: Test.cpp.o
-.PHONY : Test.o
+src/Test.o: src/Test.cpp.o
+.PHONY : src/Test.o
 
 # target to build an object file
-Test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/Test.cpp.o
-.PHONY : Test.cpp.o
+src/Test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/Test.cpp.o
+.PHONY : src/Test.cpp.o
 
-Test.i: Test.cpp.i
-.PHONY : Test.i
+src/Test.i: src/Test.cpp.i
+.PHONY : src/Test.i
 
 # target to preprocess a source file
-Test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/Test.cpp.i
-.PHONY : Test.cpp.i
+src/Test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/Test.cpp.i
+.PHONY : src/Test.cpp.i
 
-Test.s: Test.cpp.s
-.PHONY : Test.s
+src/Test.s: src/Test.cpp.s
+.PHONY : src/Test.s
 
 # target to generate assembly for a file
-Test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/Test.cpp.s
-.PHONY : Test.cpp.s
+src/Test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/Test.cpp.s
+.PHONY : src/Test.cpp.s
 
-iic.o: iic.cpp.o
-.PHONY : iic.o
+src/iic.o: src/iic.cpp.o
+.PHONY : src/iic.o
 
 # target to build an object file
-iic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/iic.cpp.o
-.PHONY : iic.cpp.o
+src/iic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/iic.cpp.o
+.PHONY : src/iic.cpp.o
 
-iic.i: iic.cpp.i
-.PHONY : iic.i
+src/iic.i: src/iic.cpp.i
+.PHONY : src/iic.i
 
 # target to preprocess a source file
-iic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/iic.cpp.i
-.PHONY : iic.cpp.i
+src/iic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/iic.cpp.i
+.PHONY : src/iic.cpp.i
 
-iic.s: iic.cpp.s
-.PHONY : iic.s
+src/iic.s: src/iic.cpp.s
+.PHONY : src/iic.s
 
 # target to generate assembly for a file
-iic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/iic.cpp.s
-.PHONY : iic.cpp.s
+src/iic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/iic.cpp.s
+.PHONY : src/iic.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/iic_test.dir/build.make CMakeFiles/iic_test.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -234,18 +234,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... iic_test"
-	@echo "... MPU6050.o"
-	@echo "... MPU6050.i"
-	@echo "... MPU6050.s"
-	@echo "... Test.o"
-	@echo "... Test.i"
-	@echo "... Test.s"
-	@echo "... iic.o"
-	@echo "... iic.i"
-	@echo "... iic.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/MPU6050.o"
+	@echo "... src/MPU6050.i"
+	@echo "... src/MPU6050.s"
+	@echo "... src/Test.o"
+	@echo "... src/Test.i"
+	@echo "... src/Test.s"
+	@echo "... src/iic.o"
+	@echo "... src/iic.i"
+	@echo "... src/iic.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

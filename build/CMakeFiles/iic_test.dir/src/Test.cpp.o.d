@@ -1,7 +1,7 @@
-CMakeFiles/iic_test.dir/Test.cpp.o: \
- /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/Test.cpp \
+CMakeFiles/iic_test.dir/src/Test.cpp.o: \
+ /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/src/Test.cpp \
  /usr/include/stdc-predef.h \
- /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/Test.h \
+ /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/include/Test.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -208,10 +208,10 @@ CMakeFiles/iic_test.dir/Test.cpp.o: \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
- /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.h \
+ /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/include/iic.h \
  /usr/include/i2c/smbus.h /usr/include/linux/i2c.h \
  /usr/include/c++/13/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/include/c++/13/thread /usr/include/c++/13/bits/std_thread.h \
  /usr/include/c++/13/bits/unique_ptr.h \
  /usr/include/c++/13/bits/this_thread_sleep.h \
- /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.h
+ /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/include/MPU6050.h
