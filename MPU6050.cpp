@@ -36,7 +36,7 @@ SensorData readMPU6050(IIC &iic) {
     SensorData data;
 
     // 读取14字节数据（从0x3B开始）
-    iic.iic_writeRegister(0x3B, 0x00); // 设置起始寄存器地址
+    iic.iic_writeRegister(0x43, 0x00); // 设置起始寄存器地址
     ssize_t bytesRead = read(iic.file, buffer, 14);
     if (bytesRead != 14) {
         throw std::runtime_error("读取传感器数据失败");
