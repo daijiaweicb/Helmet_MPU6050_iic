@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build",
+  "command": "/usr/bin/c++  -I/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/include -g -std=gnu++17 -o CMakeFiles/iic_test.dir/main.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/main.cpp",
+  "file": "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/main.cpp",
+  "output": "CMakeFiles/iic_test.dir/main.cpp.o"
+},
+{
+  "directory": "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build",
+  "command": "/usr/bin/c++  -I/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/include -g -std=gnu++17 -o CMakeFiles/iic_test.dir/iic.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp",
+  "file": "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/iic.cpp",
+  "output": "CMakeFiles/iic_test.dir/iic.cpp.o"
+},
+{
+  "directory": "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/build",
+  "command": "/usr/bin/c++  -I/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/include -g -std=gnu++17 -o CMakeFiles/iic_test.dir/MPU6050.cpp.o -c /home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.cpp",
+  "file": "/home/zha-yixuan/Desktop/Helmet_MPU6050_iic/MPU6050.cpp",
+  "output": "CMakeFiles/iic_test.dir/MPU6050.cpp.o"
+}
+]
