@@ -25,10 +25,10 @@ void initMPU6050(IIC &iic) {
         iic.iic_writeRegister(0x1B, 0x00); // 0x00=±250°/s, 0x08=±500°/s, 0x10=±1000°/s, 0x18=±2000°/s
         
         // 配置低通滤波器（可选）
-        iic.iic_writeRegister(0x1A, 0x03); // 带宽44Hz，延迟4.9ms
+        // iic.iic_writeRegister(0x1A, 0x03); // 带宽44Hz，延迟4.9ms
 
 
-        iic.iic_writeRegister(0x19, 0);
+        // iic.iic_writeRegister(0x19, 0);
         
     } catch (const std::exception &e) {
         std::cerr << "初始化失败: " << e.what() << std::endl;
