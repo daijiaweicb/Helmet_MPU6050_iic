@@ -10,26 +10,29 @@ int main()
     iic.iic_open();
     initMPU6050(iic);
 
-    AngleData params;
-    calibrateSensors(iic, params,5000); // 校准零偏
+    // 校准零偏，保存到 params 中
+    AngleData calib;
+    calibrateSensors(iic, calib, 1000); // 校准零偏
 
     auto prevTime = std::chrono::high_resolution_clock::now();
-    AngleData prevAngle = {0, 0};
+    // 初始化积分角度为0
+    AngleData prevAngle = {0, 0, 0, 0, 0}; // roll, pitch, yaw以及零偏（零偏后面不再使用）
 
     try {
         while (true) {
-            // 动态计算dt
+            // 计算采样间隔 dt
             auto currentTime = std::chrono::high_resolution_clock::now();
             float dt = std::chrono::duration<float>(currentTime - prevTime).count();
             prevTime = currentTime;
 
             SensorData data = readMPU6050(iic);
-            // AngleData angle = calculateAngle(data, dt, prevAngle);
-            // prevAngle = angle;
 
-            // std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch << "°" << std::endl;
-            std::cout <<"X: " << data.gyroX << ",Y: " << data.gyroY<< ",Z: " << data.gyroZ<<std::endl;
+            // 使用校准零偏进行角度积分
+            AngleData angle = calculateAngle(data, dt, prevAngle, calib);
+            prevAngle = angle;  // 更新积分结果
 
+            std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch 
+                      << "°" << std::endl;
         }
     } catch (const std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;

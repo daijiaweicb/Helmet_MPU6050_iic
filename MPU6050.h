@@ -26,7 +26,7 @@ struct AngleData {
 
 void calibrateSensors(IIC &iic, AngleData &params, int samples);
 SensorData readMPU6050(IIC &iic);
-AngleData calculateAngle(const SensorData &data, float dt, AngleData &prev);
+AngleData calculateAngle(const SensorData &data, float dt, const AngleData &prev, const AngleData &calib);
 
 
 #endif

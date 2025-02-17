@@ -1,14 +1,14 @@
 #include "MPU6050.h"
 #include "iic.h"
 
-void calibrateSensors(IIC &iic, AngleData &params, int samples = 5000) {
+void calibrateSensors(IIC &iic, AngleData &params, int samples = 1000) {
     float gx = 0, gy = 0, gz = 0;
     for (int i = 0; i < samples; i++) {
         SensorData data = readMPU6050(iic);
         gx += data.gyroX;
         gy += data.gyroY;
         gz += data.gyroZ;
-        usleep(5000);
+        usleep(1000);
     }
     params.gyroBiasX = gx / samples;
     params.gyroBiasY = gy / samples;
@@ -64,17 +64,17 @@ SensorData readMPU6050(IIC &iic) {
 
 
 
-AngleData calculateAngle(const SensorData &data, float dt, AngleData &prev) {
+// 新的 calculateAngle 函数，添加一个校准参数 calib
+AngleData calculateAngle(const SensorData &data, float dt, const AngleData &prev, const AngleData &calib) {
     AngleData angle;
+    // 用校准的零偏值减去原始数据
+    float gyroX = data.gyroX - calib.gyroBiasX;
+    float gyroY = data.gyroY - calib.gyroBiasY;
+    float gyroZ = data.gyroZ - calib.gyroBiasZ;
 
-    // 去除陀螺仪零偏
-    float gyroX = data.gyroX - prev.gyroBiasX;
-    float gyroY = data.gyroY - prev.gyroBiasY;
-    float gyroZ = data.gyroZ - prev.gyroBiasZ;
-
-    // 陀螺仪积分
-    float gyroRoll = prev.roll + gyroX * dt;
-    float gyroPitch = prev.pitch + gyroY * dt;
+    // 积分计算
+    angle.roll  = prev.roll  + gyroX * dt;
+    angle.pitch = prev.pitch + gyroY * dt;
 
     return angle;
 }
