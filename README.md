@@ -15,8 +15,7 @@ sudo apt install -y libgpiod-dev libi2c-dev
 
 ## How to use
 ```bash
-cd build/
-cmake ..
+cmake .
 make
 sudo ./iic_test
 ```
