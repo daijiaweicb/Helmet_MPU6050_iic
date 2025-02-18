@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/iic_test.dir/src/MPU6050.cpp.o CMakeFiles/iic_test.dir/src/Test.cpp.o CMakeFiles/iic_test.dir/src/iic.cpp.o CMakeFiles/iic_test.dir/src/main.cpp.o -o iic_test  -li2c 
