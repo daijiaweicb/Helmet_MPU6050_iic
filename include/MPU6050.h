@@ -37,6 +37,7 @@ public:
 class Kalman : public MPU
 {
 public:
+    MPU mpu;
     struct KalmanFilter
     {
         float angle;      // 估计的角度
