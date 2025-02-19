@@ -17,12 +17,15 @@
 
 class IIC {
 public:
+    int file;
+
     /**
      * construct of the class
      */
     IIC(int adapter) : adapter_nr(adapter), file(-1) {}
 
     
+
     /**
      * Open the I2C device
      * In this case, open the MPU 6050
@@ -44,13 +47,14 @@ public:
      * @return {bool}            : 
      */
     bool readRegisters(uint8_t reg, uint8_t* buffer, size_t length);
+
     /**
      * 
      * @param  {uint8_t} reg   : 
      * @param  {uint8_t} value : 
      */
     void iic_writeRegister(uint8_t reg, uint8_t value);
-    int file;
+
 
 private:
     int adapter_nr;
