@@ -15,16 +15,15 @@ void Kalman::initKalmanFilter(KalmanFilter &kf)
 
 float Kalman::kalmanUpdate(KalmanFilter &kf, float newRate, float dt, float measuredAngle)
 {
-    // 预测步骤：利用陀螺仪积分预测角度
     kf.angle += dt * (newRate - kf.bias);
     
-    // 更新误差协方差矩阵
+    // Updating the error covariance matrix
     kf.P[0][0] += dt * (dt * kf.P[1][1] - kf.P[0][1] - kf.P[1][0] + kf.Q_angle);
     kf.P[0][1] -= dt * kf.P[1][1];
     kf.P[1][0] -= dt * kf.P[1][1];
     kf.P[1][1] += kf.Q_bias * dt;
     
-    // 测量更新
+    // Update
     float S = kf.P[0][0] + kf.R_measure;
     float K0 = kf.P[0][0] / S;
     float K1 = kf.P[1][0] / S;
@@ -45,8 +44,7 @@ float Kalman::kalmanUpdate(KalmanFilter &kf, float newRate, float dt, float meas
 }
 
 
-//---------------------- MPU6050 操作函数 ----------------------
-// 校准陀螺仪：计算零偏（要求传感器处于静止状态）
+// Calibrate gyroscope: calculate zero bias (requires sensor to be at rest)
 void MPU::calibrateSensors(IIC &iic, AngleData &calib, int samples = 1000)
 {
     float gx = 0, gy = 0, gz = 0;
@@ -56,31 +54,31 @@ void MPU::calibrateSensors(IIC &iic, AngleData &calib, int samples = 1000)
             std::cerr << "Calibration read error" << std::endl;
             continue;
         }
-        // MPU6050 寄存器 0x43 开始为陀螺仪数据（跳过温度寄存器）
+        // MPU6050 register 0x43 starts with gyro data (skips temperature register)
         int16_t gx_raw = (buffer[8] << 8) | buffer[9];
         int16_t gy_raw = (buffer[10] << 8) | buffer[11];
         int16_t gz_raw = (buffer[12] << 8) | buffer[13];
-        const float gyroScale = 250.0f / 32768.0f; // ±250°/s 量程
+        const float gyroScale = 250.0f / 32768.0f; // ±250°/s
         gx += gx_raw * gyroScale;
         gy += gy_raw * gyroScale;
         gz += gz_raw * gyroScale;
-        usleep(10000);  // 每次采样间隔 10ms
+        usleep(10000);  // Sampling interval 10ms
     }
     calib.gyroBiasX = gx / samples;
     calib.gyroBiasY = gy / samples;
     calib.gyroBiasZ = gz / samples;
 }
 
-// MPU6050 初始化：唤醒、配置陀螺仪量程、低通滤波器及采样率
+
 void MPU::initMPU6050(IIC &iic)
 {
-    iic.iic_writeRegister(0x6B, 0x00);  // 唤醒
-    iic.iic_writeRegister(0x1B, 0x00);  // 陀螺仪 ±250°/s
-    iic.iic_writeRegister(0x1A, 0x03);  // 低通滤波器 44Hz
-    iic.iic_writeRegister(0x19, 0x00);  // 采样率 1kHz（分频器为 0）
+    iic.iic_writeRegister(0x6B, 0x00);  // Wake up
+    iic.iic_writeRegister(0x1B, 0x00);  //  ±250°/s
+    iic.iic_writeRegister(0x1A, 0x03);  // LowPass Filter 44Hz
+    iic.iic_writeRegister(0x19, 0x00);  // Sampling Rate 1kHz
 }
 
-// 读取 MPU6050 数据：加速度计和陀螺仪共 14 字节（加速度计6字节、温度2字节、陀螺仪6字节）
+// Read MPU6050 data: accelerometer and gyro totaling 14 bytes (6 bytes for accelerometer, 2 bytes for temperature, 6 bytes for gyro)
 MPU::SensorData MPU::readMPU6050(IIC &iic)
 {
     SensorData data;
@@ -88,7 +86,7 @@ MPU::SensorData MPU::readMPU6050(IIC &iic)
     if(!iic.readRegisters(0x3B, buffer, 14)) {
         throw std::runtime_error("Failed to read sensor data");
     }
-    // 加速度计数据（假设量程 ±2g，转换因子 1/16384）
+    // Accelerometer data (assumed range ±2g, conversion factor 1/16384)
     int16_t ax_raw = (buffer[0] << 8) | buffer[1];
     int16_t ay_raw = (buffer[2] << 8) | buffer[3];
     int16_t az_raw = (buffer[4] << 8) | buffer[5];
@@ -97,7 +95,7 @@ MPU::SensorData MPU::readMPU6050(IIC &iic)
     data.accelY = ay_raw * accelScale;
     data.accelZ = az_raw * accelScale;
     
-    // 陀螺仪数据（寄存器 0x43 开始）
+    // Gyro data (starting at register 0x43)
     int16_t gx_raw = (buffer[8] << 8) | buffer[9];
     int16_t gy_raw = (buffer[10] << 8) | buffer[11];
     int16_t gz_raw = (buffer[12] << 8) | buffer[13];
@@ -109,7 +107,7 @@ MPU::SensorData MPU::readMPU6050(IIC &iic)
     return data;
 }
 
-// 利用加速度计数据计算 Roll 和 Pitch（单位：度）  
+// Calculate Roll and Pitch in degrees using accelerometer data.  
 float MPU::getAccRoll(float accelY, float accelZ) 
 {
     return atan2(accelY, accelZ) * 180.0f / M_PI;
@@ -119,25 +117,25 @@ float MPU:: getAccPitch(float accelX, float accelY, float accelZ)
     return atan2(-accelX, sqrt(accelY * accelY + accelZ * accelZ)) * 180.0f / M_PI;
 }
 
-//---------------------- 融合 Kalman 滤波的角度计算 ----------------------
-// 使用 Kalman 滤波融合陀螺仪积分与加速度计测量，计算 Roll、Pitch（Yaw 仅简单积分）
+
+// Calculate Roll, Pitch by fusing gyroscope integration with accelerometer measurements using Kalman filtering (Yaw simply integrates)
 MPU::AngleData Kalman::calculateAngle(const SensorData &data, float dt, const AngleData &prev, 
                            const AngleData &calib, KalmanFilter &kfRoll, KalmanFilter &kfPitch)
 {
     AngleData angle;
-    // 修正陀螺仪数据（去除校准零偏）
+    // Correct gyro data (remove calibration zero bias)
     float gyroX = data.gyroX - calib.gyroBiasX;
     float gyroY = data.gyroY - calib.gyroBiasY;
     float gyroZ = data.gyroZ - calib.gyroBiasZ;
     
-    // 利用加速度计计算角度
+    // Calculation of angles using accelerometers
     float accRoll  = mpu. getAccRoll(data.accelY, data.accelZ);
     float accPitch = mpu. getAccPitch(data.accelX, data.accelY, data.accelZ);
     
-    // 使用 Kalman 滤波更新 Roll 与 Pitch
+    // Updating Roll and Pitch with Kalman Filtering
     angle.roll  = kalmanUpdate(kfRoll, gyroX, dt, accRoll);
     angle.pitch = kalmanUpdate(kfPitch, gyroY, dt, accPitch);
-    // Yaw 仅用简单积分
+    // Yaw using only simple integrals
     angle.yaw = prev.yaw + gyroZ * dt;
     
     return angle;
