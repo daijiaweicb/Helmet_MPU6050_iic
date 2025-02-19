@@ -25,7 +25,7 @@ public:
         float gyroBiasX, gyroBiasY, gyroBiasZ;
     };
 
-    virtual ~MPU() = default; // 让基类有一个虚析构函数
+    virtual ~MPU() = default; 
 
     void calibrateSensors(IIC &iic, AngleData &calib, int samples);
     void initMPU6050(IIC &iic);
@@ -40,12 +40,12 @@ public:
     MPU mpu;
     struct KalmanFilter
     {
-        float angle;      // 估计的角度
-        float bias;       // 估计的陀螺仪零偏
-        float P[2][2];    // 误差协方差矩阵
-        float Q_angle;    // 过程噪声方差（角度）
-        float Q_bias;     // 过程噪声方差（零偏）
-        float R_measure;  // 观测噪声方差
+        float angle;      // Estimated perspective
+        float bias;       // Estimated gyro zero bias
+        float P[2][2];    // Error covariance matrix
+        float Q_angle;    // Process noise variance (angle)
+        float Q_bias;     // Process noise variance (zero bias)
+        float R_measure;  // Observation noise variance
     };
 
     void initKalmanFilter(KalmanFilter &kf);
