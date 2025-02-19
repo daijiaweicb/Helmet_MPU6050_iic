@@ -80,7 +80,7 @@ void MPU::initMPU6050(IIC &iic)
 }
 
 // 读取 MPU6050 数据：加速度计和陀螺仪共 14 字节（加速度计6字节、温度2字节、陀螺仪6字节）
-SensorData MPU::readMPU6050(IIC &iic)
+MPU::SensorData MPU::readMPU6050(IIC &iic)
 {
     SensorData data;
     uint8_t buffer[14];
@@ -120,7 +120,7 @@ float MPU:: getAccPitch(float accelX, float accelY, float accelZ)
 
 //---------------------- 融合 Kalman 滤波的角度计算 ----------------------
 // 使用 Kalman 滤波融合陀螺仪积分与加速度计测量，计算 Roll、Pitch（Yaw 仅简单积分）
-AngleData Kalman::calculateAngle(const SensorData &data, float dt, const AngleData &prev, 
+MPU::AngleData Kalman::calculateAngle(const SensorData &data, float dt, const AngleData &prev, 
                            const AngleData &calib, KalmanFilter &kfRoll, KalmanFilter &kfPitch)
 {
     AngleData angle;
