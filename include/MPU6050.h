@@ -9,14 +9,13 @@
 #include <unistd.h>
 #include <cstring>
 #include <cstdint>
-#include <thread>
 
-class Kalman :public MPU
+class Kalman : public MPU
 {
     public:
-
     struct KalmanFilter
     {
+        public:
         float angle;      // 估计的角度
         float bias;       // 估计的陀螺仪零偏
         float P[2][2];    // 误差协方差矩阵
