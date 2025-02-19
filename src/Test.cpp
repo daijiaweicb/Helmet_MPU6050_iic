@@ -14,14 +14,14 @@ void test()
     iic.iic_open();
     mpu.initMPU6050(iic);
     
-    // 校准陀螺仪零偏（校准时确保传感器静止）
+    // Calibrate gyro zero bias
     calib = {0};
     mpu.calibrateSensors(iic, calib, 1000);
     std::cout << "Calibration done: BiasX=" << calib.gyroBiasX 
               << ", BiasY=" << calib.gyroBiasY 
               << ", BiasZ=" << calib.gyroBiasZ << std::endl;
     
-    // 初始化角度数据与 Kalman 滤波器
+    // Initializing Angle Data and Kalman Filters
     prevAngle = {0, 0, 0};
     kal.initKalmanFilter(kfRoll);
     kal.initKalmanFilter(kfPitch);
@@ -41,7 +41,7 @@ void test()
             std::cout << "Roll: " << angle.roll << "°, Pitch: " << angle.pitch 
                       << "°, Yaw: " << angle.yaw << "°" << std::endl;
             
-            usleep(10000);  // 延时 10ms
+            usleep(10000);  // Delay 10ms
         }
     } catch(const std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;
