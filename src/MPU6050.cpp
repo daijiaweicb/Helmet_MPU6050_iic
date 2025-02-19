@@ -1,8 +1,7 @@
 #include "MPU6050.h"
 #include <cmath>
 
-//---------------------- Kalman 函数 ----------------------
-void initKalmanFilter(KalmanFilter &kf)
+void Kalman::initKalmanFilter(KalmanFilter &kf)
 {
     kf.angle = 0.0f;
     kf.bias = 0.0f;
@@ -13,7 +12,7 @@ void initKalmanFilter(KalmanFilter &kf)
     kf.R_measure = 0.03f;
 }
 
-float kalmanUpdate(KalmanFilter &kf, float newRate, float dt, float measuredAngle)
+float Kalman::kalmanUpdate(KalmanFilter &kf, float newRate, float dt, float measuredAngle)
 {
     // 预测步骤：利用陀螺仪积分预测角度
     kf.angle += dt * (newRate - kf.bias);
@@ -47,7 +46,7 @@ float kalmanUpdate(KalmanFilter &kf, float newRate, float dt, float measuredAngl
 
 //---------------------- MPU6050 操作函数 ----------------------
 // 校准陀螺仪：计算零偏（要求传感器处于静止状态）
-void calibrateSensors(IIC &iic, AngleData &calib, int samples = 1000)
+void MPU::calibrateSensors(IIC &iic, AngleData &calib, int samples = 1000)
 {
     float gx = 0, gy = 0, gz = 0;
     for (int i = 0; i < samples; i++) {
@@ -72,7 +71,7 @@ void calibrateSensors(IIC &iic, AngleData &calib, int samples = 1000)
 }
 
 // MPU6050 初始化：唤醒、配置陀螺仪量程、低通滤波器及采样率
-void initMPU6050(IIC &iic)
+void MPU::initMPU6050(IIC &iic)
 {
     iic.iic_writeRegister(0x6B, 0x00);  // 唤醒
     iic.iic_writeRegister(0x1B, 0x00);  // 陀螺仪 ±250°/s
@@ -81,7 +80,7 @@ void initMPU6050(IIC &iic)
 }
 
 // 读取 MPU6050 数据：加速度计和陀螺仪共 14 字节（加速度计6字节、温度2字节、陀螺仪6字节）
-SensorData readMPU6050(IIC &iic)
+SensorData MPU::readMPU6050(IIC &iic)
 {
     SensorData data;
     uint8_t buffer[14];
@@ -110,18 +109,18 @@ SensorData readMPU6050(IIC &iic)
 }
 
 // 利用加速度计数据计算 Roll 和 Pitch（单位：度）  
-float getAccRoll(float accelY, float accelZ) 
+float MPU::getAccRoll(float accelY, float accelZ) 
 {
     return atan2(accelY, accelZ) * 180.0f / M_PI;
 }
-float getAccPitch(float accelX, float accelY, float accelZ)
+float MPU:: getAccPitch(float accelX, float accelY, float accelZ)
 {
     return atan2(-accelX, sqrt(accelY * accelY + accelZ * accelZ)) * 180.0f / M_PI;
 }
 
 //---------------------- 融合 Kalman 滤波的角度计算 ----------------------
 // 使用 Kalman 滤波融合陀螺仪积分与加速度计测量，计算 Roll、Pitch（Yaw 仅简单积分）
-AngleData calculateAngle(const SensorData &data, float dt, const AngleData &prev, 
+AngleData Kalman::calculateAngle(const SensorData &data, float dt, const AngleData &prev, 
                            const AngleData &calib, KalmanFilter &kfRoll, KalmanFilter &kfPitch)
 {
     AngleData angle;
@@ -131,8 +130,8 @@ AngleData calculateAngle(const SensorData &data, float dt, const AngleData &prev
     float gyroZ = data.gyroZ - calib.gyroBiasZ;
     
     // 利用加速度计计算角度
-    float accRoll  = getAccRoll(data.accelY, data.accelZ);
-    float accPitch = getAccPitch(data.accelX, data.accelY, data.accelZ);
+    float accRoll  = mpu. getAccRoll(data.accelY, data.accelZ);
+    float accPitch = mpu. getAccPitch(data.accelX, data.accelY, data.accelZ);
     
     // 使用 Kalman 滤波更新 Roll 与 Pitch
     angle.roll  = kalmanUpdate(kfRoll, gyroX, dt, accRoll);
