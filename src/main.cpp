@@ -9,8 +9,8 @@
 #include "MPU6050.h"
 #include "Test.h"
 
-int main() 
+int main()
 {
-    test();    
+    test();
     return 0;
 }

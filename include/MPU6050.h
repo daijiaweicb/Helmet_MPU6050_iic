@@ -19,13 +19,13 @@ public:
         float accelX, accelY, accelZ;
     };
 
-    struct AngleData 
+    struct AngleData
     {
         float roll, pitch, yaw;
         float gyroBiasX, gyroBiasY, gyroBiasZ;
     };
 
-    virtual ~MPU() = default; 
+    virtual ~MPU() = default;
 
     void calibrateSensors(IIC &iic, AngleData &calib, int samples);
     void initMPU6050(IIC &iic);
@@ -40,12 +40,12 @@ public:
     MPU mpu;
     struct KalmanFilter
     {
-        float angle;      // Estimated perspective
-        float bias;       // Estimated gyro zero bias
-        float P[2][2];    // Error covariance matrix
-        float Q_angle;    // Process noise variance (angle)
-        float Q_bias;     // Process noise variance (zero bias)
-        float R_measure;  // Observation noise variance
+        float angle;     // Estimated perspective
+        float bias;      // Estimated gyro zero bias
+        float P[2][2];   // Error covariance matrix
+        float Q_angle;   // Process noise variance (angle)
+        float Q_bias;    // Process noise variance (zero bias)
+        float R_measure; // Observation noise variance
     };
 
     void initKalmanFilter(KalmanFilter &kf);
