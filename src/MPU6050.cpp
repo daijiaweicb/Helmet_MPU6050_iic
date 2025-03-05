@@ -5,7 +5,7 @@
 void MPU::initMPU6050(IIC &iic)
 {
     iic.iic_writeRegister(0x6B, 0x00); // Wake up
-    iic.iic_writeRegister(0x37, 0x90);
+    iic.iic_writeRegister(0x37, 0x10);
     iic.iic_writeRegister(0x38, 0x01);
     iic.iic_writeRegister(0x1B, 0x00); //  ±250°/s
     iic.iic_writeRegister(0x1A, 0x03); // LowPass Filter 44Hz
