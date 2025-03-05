@@ -45,7 +45,7 @@ void MPU::dataReady()
     prevTime = currentTime;
 
     senda = readMPU6050(*iic_ptr);
-    
+        
     angle = calculateAngle(senda, dt, prevAngle, calib, kfRoll, kfPitch);
     prevAngle = angle;
     

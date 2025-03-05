@@ -15,21 +15,19 @@
 #include "Kalman.h"
 #include "Callback.h"
 
-#define Interupt_MPU 7
+#define Interupt_MPU 6
 #define chipNo 0
 
 class CallbackInterface
 {
-    public:
+public:
     virtual void SensorCallback(float angle) = 0;
     virtual ~CallbackInterface() = default;
 };
 
-
-
 class MyMPU : public CallbackInterface
 {
-    public:
+public:
     void SensorCallback(float angle) override;
 };
 
@@ -113,7 +111,6 @@ private:
     gpiod_chip *chipGPIO = nullptr;
     gpiod_line *pin = nullptr;
     bool running = false;
-    
 
     AngleData calib;
     AngleData angle;
@@ -128,12 +125,11 @@ private:
 
 class GetMPU : public MPU
 {
-    private:
-    std::vector<CallbackInterface*> callback;
+private:
+    std::vector<CallbackInterface *> callback;
 
-    public:
-    void RegisterSetting(CallbackInterface* cb);
-
+public:
+    void RegisterSetting(CallbackInterface *cb);
 };
 
 #endif
