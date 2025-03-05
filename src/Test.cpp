@@ -8,7 +8,8 @@ void test()
     GetMPU gmu;
 
     iic.iic_open();
-    mpu.beginMPU6050();
+    // mpu.beginMPU6050();
+    mpu.initMPU6050(iic);
     gmu.RegisterSetting(&mypu);
 
     
