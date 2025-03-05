@@ -15,20 +15,22 @@ void MPU::initMPU6050(IIC &iic)
 
 void MPU::beginMPU6050()
 {
-    if(!iic_ptr) {
-        iic_ptr = new IIC(1);  
-        owns_iic = true;
-        iic_ptr->iic_open();
-    }
+    // if(!iic_ptr) {
+    //     iic_ptr = new IIC(1);  
+    //     owns_iic = true;
+    //     iic_ptr->iic_open();
+    // }
     
-
+    IIC iic(1);
+    iic.iic_open();
+    initMPU6050(iic);
     chipGPIO = gpiod_chip_open_by_number(chipNo);
     pin = gpiod_chip_get_line(chipGPIO, Interupt_MPU);
     int ret = gpiod_line_request_rising_edge_events(pin, "Consumer");
 
     
     calib = {0};
-    calibrateSensors(*iic_ptr, calib, 1000);
+    calibrateSensors(iic, calib, 1000);
 
     prevAngle = {0,0,0};
 

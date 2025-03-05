@@ -2,17 +2,16 @@
 
 void test()
 {
-    IIC iic(1);
+    
     MPU mpu;
     MyMPU mypu;
     GetMPU gmu;
 
-    iic.iic_open();
     
-    mpu.initMPU6050(iic);
     mpu.beginMPU6050();
+    
     gmu.RegisterSetting(&mypu);
 
     
-    iic.iic_close();
+    // iic.iic_close();
 }
