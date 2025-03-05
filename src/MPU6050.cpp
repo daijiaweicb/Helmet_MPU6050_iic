@@ -9,7 +9,7 @@ void MPU::initMPU6050(IIC &iic)
     iic.iic_writeRegister(0x38, 0x01);
     iic.iic_writeRegister(0x1B, 0x00); //  ±250°/s
     iic.iic_writeRegister(0x1A, 0x03); // LowPass Filter 44Hz
-    iic.iic_writeRegister(0x19, 249);  // Sampling Rate 4hz
+    iic.iic_writeRegister(0x19, 0xF9);  // Sampling Rate 4hz
 }
 
 void MPU::beginMPU6050()
@@ -45,7 +45,7 @@ void MPU::dataReady()
     prevTime = currentTime;
 
     senda = readMPU6050(*iic_ptr);
-        
+
     angle = calculateAngle(senda, dt, prevAngle, calib, kfRoll, kfPitch);
     prevAngle = angle;
     
