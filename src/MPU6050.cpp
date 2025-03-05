@@ -59,7 +59,7 @@ void MPU::beginMPU6050()
 
 void MPU::dataReady()
 {
-
+    IIC iic(1);
     static bool first_call = true;
     static auto prevTime = std::chrono::high_resolution_clock::now();
 
@@ -76,7 +76,7 @@ void MPU::dataReady()
     }
     prevTime = currentTime;
 
-    senda = readMPU6050(*iic_ptr);
+    senda = readMPU6050(iic);
 
     angle = calculateAngle(senda, dt, prevAngle, calib, kfRoll, kfPitch);
     prevAngle = angle;
