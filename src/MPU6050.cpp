@@ -1,7 +1,6 @@
 #include "MPU6050.h"
 #include <cmath>
 
-
 void MPU::initMPU6050(IIC &iic)
 {
     iic.iic_writeRegister(0x6B, 0x00); // Wake up
@@ -9,55 +8,83 @@ void MPU::initMPU6050(IIC &iic)
     iic.iic_writeRegister(0x38, 0x01);
     iic.iic_writeRegister(0x1B, 0x00); //  ±250°/s
     iic.iic_writeRegister(0x1A, 0x03); // LowPass Filter 44Hz
-    iic.iic_writeRegister(0x19, 0xF9);  // Sampling Rate 4hz
+    iic.iic_writeRegister(0x19, 0xF9); // Sampling Rate 4hz
     std::cout << "init success" << std::endl;
 }
 
 void MPU::beginMPU6050()
 {
     // if(!iic_ptr) {
-    //     iic_ptr = new IIC(1);  
+    //     iic_ptr = new IIC(1);
     //     owns_iic = true;
     //     iic_ptr->iic_open();
     // }
-    
+
     IIC iic(1);
     iic.iic_open();
     initMPU6050(iic);
-    chipGPIO = gpiod_chip_open_by_number(chipNo);
-    pin = gpiod_chip_get_line(chipGPIO, Interupt_MPU);
-    int ret = gpiod_line_request_rising_edge_events(pin, "Consumer");
-    std::cout << "Gpio init success" << std::endl;
 
-    
+    chipGPIO = gpiod_chip_open_by_number(chipNo);
+    if (!chipGPIO)
+    {
+        throw std::runtime_error("Failed to open GPIO chip");
+    }
+
+    pin = gpiod_chip_get_line(chipGPIO, Interupt_MPU);
+    if (!pin)
+    {
+        gpiod_chip_close(chipGPIO);
+        throw std::runtime_error("Failed to get GPIO line");
+    }
+
+    int ret = gpiod_line_request_rising_edge_events(pin, "Consumer");
+    if (ret < 0)
+    {
+        std::cerr << "Could not request event" << std::endl;
+    }
+
     calib = {0};
     calibrateSensors(iic, calib, 1000);
 
-    prevAngle = {0,0,0};
+    std::cout << "Calibrate sensor success" << std::endl;
 
+    prevAngle = {0, 0, 0};
     kal.initKalmanFilter(kfRoll);
     kal.initKalmanFilter(kfPitch);
     std::cout << "Kalman init success" << std::endl;
 
     str = std::thread(&MPU::worker, this);
-    std::cout <<"Thread init success" << std::endl;
+    std::cout << "Thread init success" << std::endl;
 }
 
 void MPU::dataReady()
 {
-    
+
+    static bool first_call = true;
     static auto prevTime = std::chrono::high_resolution_clock::now();
+
     auto currentTime = std::chrono::high_resolution_clock::now();
-    float dt = std::chrono::duration<float>(currentTime - prevTime).count();
+    float dt = 0.0f;
+
+    if (!first_call)
+    {
+        dt = std::chrono::duration<float>(currentTime - prevTime).count();
+    }
+    else
+    {
+        first_call = false;
+    }
     prevTime = currentTime;
 
     senda = readMPU6050(*iic_ptr);
 
     angle = calculateAngle(senda, dt, prevAngle, calib, kfRoll, kfPitch);
     prevAngle = angle;
-    
-    callback->SensorCallback(angle.pitch);
-    
+
+    if (callback != nullptr)
+    {
+        callback->SensorCallback(angle.pitch);
+    }
 }
 
 // Read MPU6050 data: accelerometer and gyro totaling 14 bytes (6 bytes for accelerometer, 2 bytes for temperature, 6 bytes for gyro)
@@ -158,5 +185,5 @@ void GetMPU ::RegisterSetting(CallbackInterface *cb)
 
 void MyMPU::SensorCallback(float angle)
 {
-    std:: cout << "angle is:" << angle << std::endl;
+    std::cout << "angle is:" << angle << std::endl;
 }
