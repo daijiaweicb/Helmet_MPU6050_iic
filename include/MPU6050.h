@@ -9,6 +9,29 @@
 #include <unistd.h>
 #include <cstring>
 #include <cstdint>
+#include <gpiod.h>
+#include <thread>
+#include <vector>
+#include "Kalman.h"
+#include "Callback.h"
+
+#define Interupt_MPU 7
+#define chipNo 0
+
+class CallbackInterface
+{
+    public:
+    virtual void SensorCallback(float angle) = 0;
+    virtual ~CallbackInterface() = default;
+};
+
+
+
+class MyMPU : public CallbackInterface
+{
+    public:
+    void SensorCallback(float angle) override;
+};
 
 class MPU
 {
@@ -25,33 +48,92 @@ public:
         float gyroBiasX, gyroBiasY, gyroBiasZ;
     };
 
-    virtual ~MPU() = default;
-
-    void calibrateSensors(IIC &iic, AngleData &calib, int samples);
+    std::thread str;
     void initMPU6050(IIC &iic);
+    void beginMPU6050();
+    void dataReady();
     SensorData readMPU6050(IIC &iic);
+    void calibrateSensors(IIC &iic, AngleData &calib, int samples);
     float getAccRoll(float accelY, float accelZ);
     float getAccPitch(float accelX, float accelY, float accelZ);
-};
-
-class Kalman : public MPU
-{
-public:
-    MPU mpu;
-    struct KalmanFilter
-    {
-        float angle;     // Estimated perspective
-        float bias;      // Estimated gyro zero bias
-        float P[2][2];   // Error covariance matrix
-        float Q_angle;   // Process noise variance (angle)
-        float Q_bias;    // Process noise variance (zero bias)
-        float R_measure; // Observation noise variance
-    };
-
-    void initKalmanFilter(KalmanFilter &kf);
-    float kalmanUpdate(KalmanFilter &kf, float newRate, float dt, float measuredAngle);
     AngleData calculateAngle(const SensorData &data, float dt, const AngleData &prev,
-                             const AngleData &calib, KalmanFilter &kfRoll, KalmanFilter &kfPitch);
+                             const AngleData &calib, Kalman::KalmanFilter &kfRoll, Kalman::KalmanFilter &kfPitch);
+    void worker()
+    {
+        running = true;
+        while (running)
+        {
+            const struct timespec ts = {1, 0};
+            int r = gpiod_line_event_wait(pin, &ts);
+            if (1 == r)
+            {
+                struct gpiod_line_event event;
+                gpiod_line_event_read(pin, &event);
+                dataReady();
+            }
+            else
+            {
+                running = false;
+            }
+        }
+    }
+
+    MPU(IIC *ext_iic = nullptr)
+        : iic_ptr(ext_iic), owns_iic(ext_iic ? false : true)
+    {
+        if (owns_iic && !iic_ptr)
+        {
+            iic_ptr = new IIC(1);
+        }
+    }
+
+    ~MPU()
+    {
+        if (pin)
+        {
+            gpiod_line_release(pin);
+            pin = nullptr;
+        }
+        if (chipGPIO)
+        {
+            gpiod_chip_close(chipGPIO);
+            chipGPIO = nullptr;
+        }
+        if (owns_iic && iic_ptr)
+        {
+            iic_ptr->iic_close();
+            delete iic_ptr;
+        }
+    }
+
+private:
+    IIC *iic_ptr = nullptr;
+    bool owns_iic = false;
+
+    gpiod_chip *chipGPIO = nullptr;
+    gpiod_line *pin = nullptr;
+    bool running = false;
+    
+
+    AngleData calib;
+    AngleData angle;
+    AngleData prevAngle;
+    SensorData senda;
+
+    Kalman kal;
+    Kalman::KalmanFilter kfRoll;
+    Kalman::KalmanFilter kfPitch;
+    CallbackInterface *callback = nullptr;
 };
 
-#endif // MPU6050_H
+class GetMPU : public MPU
+{
+    private:
+    std::vector<CallbackInterface*> callback;
+
+    public:
+    void RegisterSetting(CallbackInterface* cb);
+
+};
+
+#endif
