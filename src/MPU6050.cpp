@@ -40,6 +40,7 @@ void MPU::beginMPU6050()
     std::cout << "Kalman init success" << std::endl;
 
     str = std::thread(&MPU::worker, this);
+    std::cout <<"Thread init success" << std::endl;
 }
 
 void MPU::dataReady()
