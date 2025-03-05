@@ -87,6 +87,10 @@ public:
 
     ~MPU()
     {
+         if (str.joinable()) 
+         {
+            str.join();
+         }
         if (pin)
         {
             gpiod_line_release(pin);
