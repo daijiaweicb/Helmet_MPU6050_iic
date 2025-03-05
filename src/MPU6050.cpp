@@ -5,8 +5,8 @@
 void MPU::initMPU6050(IIC &iic)
 {
     iic.iic_writeRegister(0x6B, 0x00); // Wake up
-    // iic.iic_writeRegister(0x37, 0x10);
-    // iic.iic_writeRegister(0x38, 0x01);
+    iic.iic_writeRegister(0x37, 0x10);
+    iic.iic_writeRegister(0x38, 0x01);
     iic.iic_writeRegister(0x1B, 0x00); //  ±250°/s
     iic.iic_writeRegister(0x1A, 0x03); // LowPass Filter 44Hz
     iic.iic_writeRegister(0x19, 0xF9);  // Sampling Rate 4hz
@@ -14,17 +14,19 @@ void MPU::initMPU6050(IIC &iic)
 
 void MPU::beginMPU6050()
 {
-    if(!iic_ptr) {
+    if(iic_ptr == nullptr) {
         iic_ptr = new IIC(1);  
         owns_iic = true;
         iic_ptr->iic_open();
     }
-    initMPU6050(*iic_ptr);
+    
 
     chipGPIO = gpiod_chip_open_by_number(chipNo);
     pin = gpiod_chip_get_line(chipGPIO, Interupt_MPU);
     int ret = gpiod_line_request_rising_edge_events(pin, "Consumer");
 
+    initMPU6050(*iic_ptr);
+    
     calib = {0};
     calibrateSensors(*iic_ptr, calib, 1000);
 
