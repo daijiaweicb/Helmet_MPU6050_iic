@@ -21,12 +21,12 @@ void MPU::beginMPU6050()
     }
     
 
-    chipGPIO = gpiod_chip_open_by_number(chipNo);
-    pin = gpiod_chip_get_line(chipGPIO, Interupt_MPU);
-    int ret = gpiod_line_request_rising_edge_events(pin, "Consumer");
+    // chipGPIO = gpiod_chip_open_by_number(chipNo);
+    // pin = gpiod_chip_get_line(chipGPIO, Interupt_MPU);
+    // int ret = gpiod_line_request_rising_edge_events(pin, "Consumer");
 
     initMPU6050(*iic_ptr);
-    
+
     calib = {0};
     calibrateSensors(*iic_ptr, calib, 1000);
 
