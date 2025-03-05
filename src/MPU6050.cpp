@@ -37,6 +37,7 @@ void MPU::beginMPU6050()
 
     kal.initKalmanFilter(kfRoll);
     kal.initKalmanFilter(kfPitch);
+    std::cout << "Kalman init success" << std::endl;
 
     str = std::thread(&MPU::worker, this);
 }
