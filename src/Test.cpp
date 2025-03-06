@@ -1,12 +1,13 @@
 #include "Test.h"
+#include <memory>
 
 void test()
 {
-
+    auto myCallback = std::make_shared<MyMPU>();
     MPU mpu;
-    MyMPU mypu;
+    
 
-    mpu.RegisterSetting(&mypu);
+    mpu.RegisterSetting(myCallback);
     mpu.beginMPU6050();
 
     // iic.iic_close();

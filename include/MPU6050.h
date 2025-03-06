@@ -14,6 +14,7 @@
 #include <vector>
 #include "Kalman.h"
 #include "Callback.h"
+#include <memory>
 
 #define Interupt_MPU 6
 #define chipNo 0
@@ -77,7 +78,7 @@ public:
         }
     }
 
-    void RegisterSetting(CallbackInterface *cb);
+    void RegisterSetting(std::shared_ptr<CallbackInterface> cb);
 
     MPU() : iic(1)
     {
@@ -124,7 +125,7 @@ private:
     Kalman::KalmanFilter kfRoll;
     Kalman::KalmanFilter kfPitch;
 
-    CallbackInterface* callback = nullptr;
+    std::shared_ptr<CallbackInterface> callback; 
 };
 
 #endif
