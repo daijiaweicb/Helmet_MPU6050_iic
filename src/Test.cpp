@@ -2,16 +2,13 @@
 
 void test()
 {
-    
+
     MPU mpu;
     MyMPU mypu;
     GetMPU gmu;
 
-    
-    mpu.beginMPU6050();
-    
     gmu.RegisterSetting(&mypu);
+    mpu.beginMPU6050();
 
-    
     // iic.iic_close();
 }

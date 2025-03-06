@@ -77,16 +77,16 @@ public:
         }
     }
 
-    MPU():iic(1)
-    {}
-    
+    MPU() : iic(1)
+    {
+    }
 
     ~MPU()
     {
-         if (str.joinable()) 
-         {
+        if (str.joinable())
+        {
             str.join();
-         }
+        }
         if (pin)
         {
             gpiod_line_release(pin);
