@@ -85,6 +85,7 @@ public:
 
     ~MPU()
     {
+        running = false;
         if (str.joinable())
         {
             str.join();
@@ -124,15 +125,6 @@ private:
     Kalman::KalmanFilter kfPitch;
 
     CallbackInterface* callback = nullptr;
-};
-
-class GetMPU : public MPU
-{
-private:
-   
-
-public:
-    
 };
 
 #endif
