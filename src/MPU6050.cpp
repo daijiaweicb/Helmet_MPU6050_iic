@@ -84,6 +84,10 @@ void MPU::dataReady()
     {
         callback->SensorCallback(angle.pitch);
     }
+    else
+    {
+        std::cout <<"can not regist callback" << std::endl;
+    }
 }
 
 // Read MPU6050 data: accelerometer and gyro totaling 14 bytes (6 bytes for accelerometer, 2 bytes for temperature, 6 bytes for gyro)
