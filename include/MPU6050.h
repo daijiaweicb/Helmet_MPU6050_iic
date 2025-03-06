@@ -77,6 +77,8 @@ public:
         }
     }
 
+    void RegisterSetting(CallbackInterface *cb);
+
     MPU() : iic(1)
     {
     }
@@ -120,16 +122,17 @@ private:
     Kalman kal;
     Kalman::KalmanFilter kfRoll;
     Kalman::KalmanFilter kfPitch;
-    CallbackInterface *callback = nullptr;
+
+    CallbackInterface* callback = nullptr;
 };
 
 class GetMPU : public MPU
 {
 private:
-    std::vector<CallbackInterface *> callback;
+   
 
 public:
-    void RegisterSetting(CallbackInterface *cb);
+    
 };
 
 #endif

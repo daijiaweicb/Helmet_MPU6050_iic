@@ -5,9 +5,8 @@ void test()
 
     MPU mpu;
     MyMPU mypu;
-    GetMPU gmu;
 
-    gmu.RegisterSetting(&mypu);
+    mpu.RegisterSetting(&mypu);
     mpu.beginMPU6050();
 
     // iic.iic_close();

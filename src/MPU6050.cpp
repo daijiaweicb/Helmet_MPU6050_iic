@@ -59,6 +59,8 @@ void MPU::beginMPU6050()
 
 void MPU::dataReady()
 {
+    CallbackInterface* localcall = nullptr;
+    localcall = callback;
     static bool first_call = true;
     static auto prevTime = std::chrono::high_resolution_clock::now();
 
@@ -80,9 +82,9 @@ void MPU::dataReady()
     angle = calculateAngle(senda, dt, prevAngle, calib, kfRoll, kfPitch);
     prevAngle = angle;
 
-    if (callback != nullptr)
+    if (localcall != nullptr)
     {
-        callback->SensorCallback(angle.pitch);
+        localcall->SensorCallback(angle.pitch);
     }
     else
     {
@@ -181,9 +183,9 @@ MPU::AngleData MPU::calculateAngle(const SensorData &data, float dt, const Angle
     return angle;
 }
 
-void GetMPU ::RegisterSetting(CallbackInterface *cb)
+void MPU ::RegisterSetting(CallbackInterface *cb)
 {
-    callback.push_back(cb);
+    callback = cb;
 }
 
 void MyMPU::SensorCallback(float angle)
