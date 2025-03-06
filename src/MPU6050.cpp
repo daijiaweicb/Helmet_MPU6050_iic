@@ -20,7 +20,7 @@ void MPU::beginMPU6050()
     //     iic_ptr->iic_open();
     // }
 
-    IIC iic(1);
+    
     iic.iic_open();
     initMPU6050(iic);
 
@@ -59,7 +59,6 @@ void MPU::beginMPU6050()
 
 void MPU::dataReady()
 {
-    IIC iic(1);
     static bool first_call = true;
     static auto prevTime = std::chrono::high_resolution_clock::now();
 

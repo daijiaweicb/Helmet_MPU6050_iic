@@ -34,6 +34,7 @@ public:
 class MPU
 {
 public:
+    IIC iic;
     struct SensorData
     {
         float gyroX, gyroY, gyroZ;
@@ -76,14 +77,9 @@ public:
         }
     }
 
-    MPU(IIC *ext_iic = nullptr)
-        : iic_ptr(ext_iic), owns_iic(ext_iic ? false : true)
-    {
-        if (owns_iic && !iic_ptr)
-        {
-            iic_ptr = new IIC(1);
-        }
-    }
+    MPU():iic(1)
+    {}
+    
 
     ~MPU()
     {
