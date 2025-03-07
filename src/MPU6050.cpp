@@ -8,7 +8,7 @@ void MPU::initMPU6050(IIC &iic)
     iic.iic_writeRegister(0x38, 0x01);
     iic.iic_writeRegister(0x1B, 0x00); //  ±250°/s
     iic.iic_writeRegister(0x1A, 0x03); // LowPass Filter 44Hz
-    iic.iic_writeRegister(0x19, 0xC7); // Sampling Rate 10hz
+    iic.iic_writeRegister(0x19, 0xC7); // Sampling Rate 5hz
     std::cout << "init success" << std::endl;
 }
 
@@ -83,7 +83,7 @@ void MPU::dataReady()
 
     if (callback != nullptr)
     {
-        callback->SensorCallback(angle.pitch);
+        callback->SensorCallback(angle.roll);
     }
     else
     {
